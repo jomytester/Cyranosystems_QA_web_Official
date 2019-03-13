@@ -18,10 +18,8 @@ public class Login_page {
 	@FindBy(how = How.NAME, using = "password")
 	public static WebElement password_txt;
 
-	@FindBy(how = How.NAME, using = "login")
+	@FindBy(how = How.ID, using = "login")
 	public static WebElement login_btn;
-	
-	
 	
 	public Login_page(WebDriver driver) {
 		
