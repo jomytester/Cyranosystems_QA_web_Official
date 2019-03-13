@@ -45,15 +45,7 @@ public class Browser_factory {
 
 	}
 	
-	public static void quit_browser() {
-		
-		driver.quit();
-	}
 	
-	public static void close_window() {
-		
-		driver.close();
-	}
 	
 
 }
