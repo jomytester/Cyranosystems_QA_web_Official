@@ -5,6 +5,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
@@ -28,11 +29,19 @@ public class TestBaseclass {
 
 	}
 
-	@BeforeMethod
-
+	/*
+	@BeforeClass
 	public void Starts_execution() {
-
+		
 		driver = Browser_factory.start_browser(config.browser_value(), config.staging_url());
+	}*/
+	
+	
+	@BeforeMethod
+	public void initialisation() {
+		
+		driver = Browser_factory.start_browser(config.browser_value(), config.staging_url());
+		
 		login = PageFactory.initElements(driver, Login_page.class);
 
 	}
@@ -43,14 +52,14 @@ public class TestBaseclass {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			Helper_factory.captureScreenshot(driver);
 		}
-	}
-	
-	
-	@AfterClass
-	public void browser_close() {
+		
 		
 		driver.quit();
 	}
+	
+	
+	
+	
 	
 
 }
