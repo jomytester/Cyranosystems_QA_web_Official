@@ -1,5 +1,5 @@
 package com.cyranosystems.qa.web.utilities;
 
-public enum Browser_factory {
+public class Browser_factory {
 
 }
