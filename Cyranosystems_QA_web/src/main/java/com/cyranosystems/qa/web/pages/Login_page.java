@@ -49,9 +49,12 @@ public class Login_page {
 
 	@FindBy(how = How.CLASS_NAME, using = "CwaK9")
 	public static WebElement gmailNext_btn;
-	
-	@FindBy(how=How.NAME, using="password")
+
+	@FindBy(how = How.NAME, using = "password")
 	public static WebElement gmailPassword_txt;
+
+	@FindBy(how = How.ID, using = "passwordNext")
+	public static WebElement gmailPasswordNext_btn;
 
 	public Login_page(WebDriver driver) {
 
@@ -70,7 +73,7 @@ public class Login_page {
 
 	}
 
-	public void sso_login(String username ,String password) throws InterruptedException {
+	public void sso_login(String username, String password) throws InterruptedException {
 
 		username_txt.sendKeys(username);
 
@@ -79,7 +82,6 @@ public class Login_page {
 		String parentwindow = driver.getWindowHandle();
 
 		sso_login_btn.click();
-
 
 		Set<String> allwindows = driver.getWindowHandles();
 
@@ -100,12 +102,16 @@ public class Login_page {
 						gmail_userid_txt.sendKeys(username);
 
 						gmailNext_btn.click();
-						
-						gmailPassword_txt.sendKeys(password);
-						
-						
 
-						Thread.sleep(100000);
+						gmailPassword_txt.sendKeys(password);
+
+						Thread.sleep(3000);
+
+						gmailPasswordNext_btn.click();
+
+						driver.switchTo().window(parentwindow);
+
+						Thread.sleep(5000);
 
 					}
 
