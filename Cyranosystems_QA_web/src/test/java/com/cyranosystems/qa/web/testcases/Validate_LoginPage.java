@@ -12,7 +12,7 @@ public class Validate_LoginPage extends Test_Baseclass {
 
 	// Scenario: Log-in With valid username and password
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void login_validcredential() {
 
 		login.valid_login(config.username(), config.password());
@@ -21,7 +21,7 @@ public class Validate_LoginPage extends Test_Baseclass {
 
 	// Scenario: Log-in with incorrect username and click next
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void login_invalidUsername() {
 
 		Login_page.username_txt.sendKeys("jasdaszfdcad@gmail.com");
@@ -34,7 +34,7 @@ public class Validate_LoginPage extends Test_Baseclass {
 
 	// Scenario: Log-in with correct username and incorrect password
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void login_invalidPassword() {
 
 		login.valid_login(config.username(), "sdfv");
@@ -50,7 +50,7 @@ public class Validate_LoginPage extends Test_Baseclass {
 
 	// Scenario: Log-in with correct username and incorrect password (lock the account)
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void login_lockaccount() throws InterruptedException {
 
 		login.valid_login(config.username(), "sdfv");
@@ -77,7 +77,7 @@ public class Validate_LoginPage extends Test_Baseclass {
 
 	// Scenario : Login-handles case sensitive
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void login_caseSensitive_() {
 
 		login.valid_login(config.username().toUpperCase(), config.password().toUpperCase());
@@ -93,7 +93,7 @@ public class Validate_LoginPage extends Test_Baseclass {
 	}
 
 	// Scenario: Login - Authentication (Press-backbutton after signout)
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void login_Authentication() {
 
 		login.valid_login(config.username(), config.password());
@@ -119,7 +119,7 @@ public class Validate_LoginPage extends Test_Baseclass {
 
 	// Scenario: Login - Backtosignin
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void login_backtosignin() {
 
 		Login_page.username_txt.sendKeys(config.username());
@@ -131,7 +131,7 @@ public class Validate_LoginPage extends Test_Baseclass {
 	
 	// Scenario: Login - Learnmore
 
-	@Test(enabled = true)
+	@Test(enabled = false)
 	public void login_Learnmore() throws InterruptedException {
 
 		String parentWindow = driver.getWindowHandle();
@@ -154,6 +154,12 @@ public class Validate_LoginPage extends Test_Baseclass {
 			}
 
 		}
+	}
+	
+	@Test
+	public void login_ssologin() throws InterruptedException {
+		
+		login.sso_login(config.sso_userid(), config.sso_gmail_password());
 	}
 
 }

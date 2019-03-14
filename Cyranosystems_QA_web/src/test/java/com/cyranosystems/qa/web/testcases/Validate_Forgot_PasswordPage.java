@@ -25,8 +25,7 @@ public class Validate_Forgot_PasswordPage extends Test_Baseclass {
 		Forgot_password.mailinator_go.click();
 		//Forgot_password.table_list
 		
-		
-		
+	
 		
 	}
 
