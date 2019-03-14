@@ -6,6 +6,7 @@ import java.util.Properties;
 
 public class Configuration_Property_file {
 
+	
 	Properties property;
 
 	public Configuration_Property_file() {
