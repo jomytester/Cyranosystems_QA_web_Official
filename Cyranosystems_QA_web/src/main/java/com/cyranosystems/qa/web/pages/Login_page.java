@@ -27,6 +27,18 @@ public class Login_page {
 	@FindBy(how=How.CLASS_NAME, using= "errortxt-cls")
 	public static WebElement loginFailed_error_msg;
 	
+	@FindBy(how=How.XPATH, using="//button[@class='ellipsis']")
+	public static WebElement signout_ellipsis;
+	
+	@FindBy(how=How.XPATH, using="//span[contains(text(),'Sign out')]")
+	public static WebElement sigout_btn2;
+	
+	@FindBy(how=How.XPATH, using="//a[@class='backto']")
+	public static WebElement backToSignin_btn;
+	
+	@FindBy(how=How.XPATH, using="//button[@class='btn login-getintouch']")
+	public static WebElement learnMore_btn;
+	
 	public Login_page(WebDriver driver) {
 		
 		this.driver = driver;

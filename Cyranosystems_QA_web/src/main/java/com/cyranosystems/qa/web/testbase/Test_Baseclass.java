@@ -14,7 +14,7 @@ import com.cyranosystems.qa.web.utilities.Browser_factory;
 import com.cyranosystems.qa.web.utilities.Configuration_Property_file;
 import com.cyranosystems.qa.web.utilities.Helper_factory;
 
-public class TestBaseclass {
+public class Test_Baseclass {
 
 	public WebDriver driver;
 	public Login_page login;
