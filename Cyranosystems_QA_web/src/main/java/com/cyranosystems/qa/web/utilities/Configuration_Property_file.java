@@ -30,7 +30,6 @@ public class Configuration_Property_file {
 	public String browser_value() {
 
 		return property.getProperty("Browser");
-
 	}
 
 	public String staging_url() {

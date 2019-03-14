@@ -39,6 +39,9 @@ public class Login_page {
 	@FindBy(how=How.XPATH, using="//button[@class='btn login-getintouch']")
 	public static WebElement learnMore_btn;
 	
+	@FindBy(how=How.ID, using="sso-login-button")
+	public static WebElement sso_login_btn;
+	
 	public Login_page(WebDriver driver) {
 		
 		this.driver = driver;
@@ -54,6 +57,17 @@ public class Login_page {
 
 		login_btn.click();
 
+	}
+	
+	public void sso_login(String username) {
+		
+		username_txt.sendKeys(username);
+
+		clickon_next.click();
+		
+		sso_login_btn.click();
+		
+		
 	}
 
 }
