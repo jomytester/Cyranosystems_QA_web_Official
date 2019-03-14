@@ -46,6 +46,11 @@ public class Configuration_Property_file {
 
 		return property.getProperty("username");
 	}
+	
+	public String username_frgt_pwd() {
+
+		return property.getProperty("username_frgt_pwd");
+	}
 
 	public String password() {
 

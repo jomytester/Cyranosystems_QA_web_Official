@@ -11,7 +11,7 @@ public class Validate_Forgot_PasswordPage extends Test_Baseclass {
 	@Test(enabled = true)
 	public void forgot_passoword_validcredential() {
 		
-		forgot_pwd.forgot_password_request(config.username());
+		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
 		
 	}
 
