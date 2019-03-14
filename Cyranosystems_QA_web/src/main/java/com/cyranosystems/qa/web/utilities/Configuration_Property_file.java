@@ -52,8 +52,14 @@ public class Configuration_Property_file {
 		return property.getProperty("password");
 	}
 	
-	public String sso_userlogin() {
+	public String sso_userid() {
 	
 		return property.getProperty("SSO_user");
+	
+	}
+	
+	public String sso_gmail_password() {
+		
+		return property.getProperty("SSO_user_password");
 	}
 }
