@@ -22,6 +22,7 @@ public class Test_Baseclass {
 	public Configuration_Property_file config;
 	public Helper_factory helper;
 	public Forgot_password forgot_pwd;
+	public Browser_factory browser_factory;
 
 	@BeforeSuite
 	public void object_creation() {
@@ -29,7 +30,8 @@ public class Test_Baseclass {
 		config = new Configuration_Property_file();
 		login = new Login_page(driver);
 		forgot_pwd = new Forgot_password();
-
+		browser_factory = new Browser_factory();
+		
 	}
 
 	/*
@@ -48,7 +50,7 @@ public class Test_Baseclass {
 		login = PageFactory.initElements(driver, Login_page.class);
 		
 		forgot_pwd = PageFactory.initElements(driver, Forgot_password.class);
-
+		
 	}
 
 	@AfterMethod

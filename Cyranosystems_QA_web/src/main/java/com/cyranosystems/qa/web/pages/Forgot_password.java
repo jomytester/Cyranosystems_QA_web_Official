@@ -15,6 +15,9 @@ public class Forgot_password {
 	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
 	public static WebElement request_reset_link_btn;
 	
+	@FindBy(how = How.XPATH, using="//span[@class='succtxt-cls']")
+	public static WebElement reset_reqest_msg;
+	
 	@FindBy(how = How.XPATH, using="//input[@placeholder='Check Any Inbox!']")
 	public static WebElement registered_email;
 	
@@ -48,15 +51,16 @@ public class Forgot_password {
 	@FindBy(how = How.XPATH, using="//div[@class='d-inline-block']//button")
 	public static WebElement finish;
 	
-	@FindBy(how = How.XPATH, using="")
-	public static WebElement txt;
 	
 	
 public void forgot_password_request(String username) {
 		
 		click_here.click();
+		
 		forgotpasswordtxt.sendKeys(username);
+		
 		request_reset_link_btn.click();
+		
 		
 	}
 	

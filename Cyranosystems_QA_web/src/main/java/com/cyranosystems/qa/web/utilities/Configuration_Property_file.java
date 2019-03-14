@@ -41,10 +41,20 @@ public class Configuration_Property_file {
 
 		return property.getProperty("production_url");
 	}
+	
+	public String mailinator_url() {
+
+		return property.getProperty("mailinator_url");
+	}
 
 	public String username() {
 
 		return property.getProperty("username");
+	}
+	
+	public String username_frgt_pwd() {
+
+		return property.getProperty("username_frgt_pwd");
 	}
 
 	public String password() {
