@@ -67,7 +67,6 @@ public class Login_page {
 		
 		sso_login_btn.click();
 		
-		
 	}
 
 }
