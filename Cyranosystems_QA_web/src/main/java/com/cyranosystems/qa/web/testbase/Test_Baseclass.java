@@ -34,12 +34,6 @@ public class Test_Baseclass {
 		
 	}
 
-	/*
-	@BeforeClass
-	public void Starts_execution() {
-		
-		driver = Browser_factory.start_browser(config.browser_value(), config.staging_url());
-	}*/
 	
 	
 	@BeforeMethod
