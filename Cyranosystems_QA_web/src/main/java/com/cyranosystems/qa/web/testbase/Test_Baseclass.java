@@ -58,7 +58,6 @@ public class Test_Baseclass {
 			Helper_factory.captureScreenshot(driver);
 		}
 		
-		
 		driver.quit();
 	}
 	

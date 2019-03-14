@@ -51,6 +51,7 @@ public class Forgot_password {
 	@FindBy(how = How.XPATH, using="")
 	public static WebElement txt;
 	
+	
 public void forgot_password_request(String username) {
 		
 		click_here.click();
