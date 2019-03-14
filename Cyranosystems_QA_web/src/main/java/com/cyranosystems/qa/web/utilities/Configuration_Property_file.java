@@ -51,4 +51,9 @@ public class Configuration_Property_file {
 
 		return property.getProperty("password");
 	}
+	
+	public String sso_userlogin() {
+	
+		return property.getProperty("SSO_user");
+	}
 }
