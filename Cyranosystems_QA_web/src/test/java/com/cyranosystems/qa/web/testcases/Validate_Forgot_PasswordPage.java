@@ -6,7 +6,6 @@ import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 
 public class Validate_Forgot_PasswordPage extends Test_Baseclass {
 	
-	
 	//Forgot Password page > With valid credentials (Tapping on Hyper link in email page in Username page)
 	
 	@Test(enabled = true)
