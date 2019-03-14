@@ -6,7 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class Forgot_password {
+public class ForgotPassword_page {
 
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Click Here')]")
 	public static WebElement click_here; 

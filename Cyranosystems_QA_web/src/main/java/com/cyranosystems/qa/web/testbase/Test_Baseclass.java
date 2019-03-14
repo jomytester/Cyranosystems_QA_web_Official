@@ -7,7 +7,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
-import com.cyranosystems.qa.web.pages.Forgot_password;
+import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.pages.Login_page;
 import com.cyranosystems.qa.web.utilities.Browser_factory;
 import com.cyranosystems.qa.web.utilities.Configuration_Property_file;
@@ -19,7 +19,7 @@ public class Test_Baseclass {
 	public Login_page login;
 	public Configuration_Property_file config;
 	public Helper_factory helper;
-	public Forgot_password forgot_pwd;
+	public ForgotPassword_page forgot_pwd;
 	public Browser_factory browser_factory;
 
 	@BeforeSuite
@@ -27,7 +27,7 @@ public class Test_Baseclass {
 
 		config = new Configuration_Property_file();
 		login = new Login_page(driver);
-		forgot_pwd = new Forgot_password();
+		forgot_pwd = new ForgotPassword_page();
 		browser_factory = new Browser_factory();
 		
 	}
@@ -41,7 +41,7 @@ public class Test_Baseclass {
 		
 		login = PageFactory.initElements(driver, Login_page.class);
 		
-		forgot_pwd = PageFactory.initElements(driver, Forgot_password.class);
+		forgot_pwd = PageFactory.initElements(driver, ForgotPassword_page.class);
 		
 	}
 

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import com.cyranosystems.qa.web.pages.Login_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 
-public class Validate_LoginPage extends Test_Baseclass {
+public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in With valid username and password
 
@@ -155,6 +155,8 @@ public class Validate_LoginPage extends Test_Baseclass {
 
 		}
 	}
+	
+	
 	
 	@Test
 	public void login_ssologin() throws InterruptedException {

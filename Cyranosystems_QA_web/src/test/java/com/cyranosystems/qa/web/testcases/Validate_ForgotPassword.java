@@ -4,10 +4,10 @@ package com.cyranosystems.qa.web.testcases;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import com.cyranosystems.qa.web.pages.Forgot_password;
+import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 
-public class Validate_Forgot_PasswordPage extends Test_Baseclass {
+public class Validate_ForgotPassword extends Test_Baseclass {
 	
 	//Forgot Password page > With valid credentials (Tapping on Hyper link in email page in Username page)
 	
@@ -21,9 +21,9 @@ public class Validate_Forgot_PasswordPage extends Test_Baseclass {
 		
 		// Navigate to Mailinator
 		browser_factory.navigate_to(driver, config.mailinator_url());
-		Forgot_password.registered_email.sendKeys(config.username_frgt_pwd());
-		Forgot_password.mailinator_go.click();
-		//Forgot_password.table_list
+		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
+		ForgotPassword_page.mailinator_go.click();
+		
 		
 	
 		
