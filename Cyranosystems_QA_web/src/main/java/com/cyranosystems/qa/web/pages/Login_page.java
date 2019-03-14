@@ -24,6 +24,9 @@ public class Login_page {
 	@FindBy(how=How.CLASS_NAME, using= "errortxt-cls")
 	public static WebElement userexist_error_msg;
 	
+	@FindBy(how=How.CLASS_NAME, using= "errortxt-cls")
+	public static WebElement loginFailed_error_msg;
+	
 	public Login_page(WebDriver driver) {
 		
 		this.driver = driver;

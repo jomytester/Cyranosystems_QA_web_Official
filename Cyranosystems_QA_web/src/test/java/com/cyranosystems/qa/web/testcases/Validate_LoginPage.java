@@ -29,6 +29,19 @@ public class Validate_LoginPage extends TestBaseclass {
 	}
 	
 	
+	@Test
+	public void invalidPassword_Logincheck() {
+		
+		Login_page.username_txt.sendKeys(config.username());
+		Login_page.clickon_next.click();
+		Login_page.password_txt.sendKeys("gggg");
+		Login_page.login_btn.click();
+		
+		String error_msg =Login_page.loginFailed_error_msg.getText();
+		
+		
+		
+		
 	
-
+	}
 }
