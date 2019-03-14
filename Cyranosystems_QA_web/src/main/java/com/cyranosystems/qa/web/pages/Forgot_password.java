@@ -1,5 +1,7 @@
 package com.cyranosystems.qa.web.pages;
 
+import java.util.List;
+
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -25,7 +27,7 @@ public class Forgot_password {
 	public static WebElement mailinator_go;
 	
 	@FindBy(how = How.XPATH, using="//div[@class='table-responsive']//table//tbody//tr")
-	public static WebElement table_list;
+	public static List<WebElement> table_list;
 	
 	@FindBy(how = How.XPATH, using="//iframe[@id='msg_body']")
 	public static WebElement frame_list;
@@ -63,5 +65,9 @@ public void forgot_password_request(String username) {
 		
 		
 	}
+
+
+
+
 	
 }

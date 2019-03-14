@@ -23,7 +23,7 @@ public class Validate_Forgot_PasswordPage extends Test_Baseclass {
 		browser_factory.navigate_to(driver, config.mailinator_url());
 		Forgot_password.registered_email.sendKeys(config.username_frgt_pwd());
 		Forgot_password.mailinator_go.click();
-		
+		//Forgot_password.table_list
 		
 		
 		

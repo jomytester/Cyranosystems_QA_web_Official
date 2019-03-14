@@ -2,8 +2,6 @@ package com.cyranosystems.qa.web.utilities;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.Properties;
 
 public class Configuration_Property_file {
