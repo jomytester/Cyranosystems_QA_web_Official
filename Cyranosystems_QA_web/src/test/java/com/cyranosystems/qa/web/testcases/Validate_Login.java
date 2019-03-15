@@ -158,7 +158,7 @@ public class Validate_Login extends Test_Baseclass {
 	
 	
 	
-	@Test
+	@Test(enabled = false)
 	public void login_ssologin() throws InterruptedException {
 		
 		login.sso_login(config.sso_userid(), config.sso_gmail_password());
