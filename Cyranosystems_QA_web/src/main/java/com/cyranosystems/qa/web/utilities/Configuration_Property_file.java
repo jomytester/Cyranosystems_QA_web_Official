@@ -69,4 +69,10 @@ public class Configuration_Property_file {
 		
 		return property.getProperty("SSO_user_password");
 	}
+	
+	public String superadmin_username() {
+		
+		return property.getProperty("super_admin");
+	}
 }
+
