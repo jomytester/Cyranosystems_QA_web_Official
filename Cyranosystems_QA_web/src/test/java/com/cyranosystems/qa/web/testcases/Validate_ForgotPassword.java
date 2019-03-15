@@ -29,8 +29,6 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
 		ForgotPassword_page.mailinator_go.click();
 		
-		
-		
 		for(int i=0; i<ForgotPassword_page.table_list.size(); i++) {
 			
 			if(ForgotPassword_page.table_list.get(i).getText().contains("Forget something")) {
@@ -88,8 +86,6 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		browser_factory.navigate_to(driver, config.mailinator_url());
 		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
 		ForgotPassword_page.mailinator_go.click();
-		
-		
 		
 		for(int i=0; i<ForgotPassword_page.table_list.size(); i++) {
 			
