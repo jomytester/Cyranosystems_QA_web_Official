@@ -55,6 +55,10 @@ public class Login_page {
 
 	@FindBy(how = How.ID, using = "passwordNext")
 	public static WebElement gmailPasswordNext_btn;
+	
+	
+	@FindBy(how=How.CLASS_NAME, using="ng-fa-icon")
+	public static WebElement moveToonepointO_btn;
 
 	public Login_page(WebDriver driver) {
 
