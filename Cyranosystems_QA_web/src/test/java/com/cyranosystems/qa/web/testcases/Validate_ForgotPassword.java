@@ -22,6 +22,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
+		
 		helper.redirecting_to_mailinator(driver);
 		
 		WebElement ele = ForgotPassword_page.frame_list;
