@@ -35,6 +35,7 @@ public class ForgotPassword_page {
 	@FindBy(how = How.XPATH, using="//table[@class='main']//table[2]//tr//td//a")
 	public static WebElement subject;
 	
+	
 	@FindBy(how = How.XPATH, using="//a[contains(text(),'Reset')]")
 	public static WebElement mail_reset;
 	
