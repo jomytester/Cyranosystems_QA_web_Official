@@ -1,186 +1,298 @@
 package com.cyranosystems.qa.web.testcases;
 
-import java.util.Set;
-
-
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.pages.Login_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
+import com.cyranosystems.qa.web.utilities.Helper_factory;
 
 public class Validate_ForgotPassword extends Test_Baseclass {
 
 	// Forgot Password page > With valid credentials (Clicking on Hyper link in
 	// email page in Username page)
 
-	@Test(enabled = false)
-	public void forgotPassoword_usernamePage_validCredential() {
+	@Test(enabled = true, priority=1)
+	public void forgotPassoword_usernamePage_validCredential() throws InterruptedException {
 
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
-		String error_msg = forgot_pwd.reset_reqest_success_msg.getText();
-		Assert.assertEquals(error_msg, "Temporary password will be sent to the below mentioned email address");
+		
+		String msg = forgot_pwd.reset_reqest_success_msg.getText();
+		
+		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		browser_factory.navigate_to(driver, config.mailinator_url());
-		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
-		ForgotPassword_page.mailinator_go.click();
-
-		for (int i = 0; i < ForgotPassword_page.table_list.size(); i++) {
-
-			if (ForgotPassword_page.table_list.get(i).getText().contains("Forget something")) {
-				// System.out.println(ForgotPassword_page.table_list.get(i).getText());
-				ForgotPassword_page.table_list.get(i).click();
-
-			} else {
-				System.out.println("nothing");
-			}
-		}
+		helper.redirecting_to_mailinator();
 
 		WebElement ele = ForgotPassword_page.frame_list;
+		
 		driver.switchTo().frame(ele);
-
+		
 		String str = ForgotPassword_page.subject.getText();
+		
 		System.out.println(str);
 
-		String parentWindow = driver.getWindowHandle();
-
-		ForgotPassword_page.mail_reset.click();
-
-		Set<String> allwinodws = driver.getWindowHandles();
-
-		for (String childWindows : allwinodws) {
-			if (!childWindows.equals(parentWindow)) {
-				driver.switchTo().window(childWindows);
-				String actualTitle = driver.getTitle();
-
-				if (actualTitle.equalsIgnoreCase("Mailinator")) {
-
-					System.out.println(driver.getTitle());
-
-				}
-			}
-		}
+		// Redirecting to Cyrano
+		helper.redirecting_to_cyrano();
 
 		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
+		
 		ForgotPassword_page.confirmpasswordtxt.sendKeys(config.password());
+		
 		ForgotPassword_page.submit_reset_password.click();
 		
+		Thread.sleep(1000);
+		
+		ForgotPassword_page.finish.click();
+		
+		String tab = driver.getTitle();
+		
+		System.out.println(tab);
 
 	}
 
-	@Test(enabled = false)
-	public void forgotPassoword_passwrodPage_validCredential() {
+	@Test(enabled = true, priority=2)
+	public void forgotPassoword_passwrodPage_validCredential() throws InterruptedException {
 
 		Login_page.username_txt.sendKeys(config.username_frgt_pwd());
+
 		Login_page.clickon_next.click();
 
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
-		String error_msg = forgot_pwd.reset_reqest_success_msg.getText();
-		Assert.assertEquals(error_msg, "Temporary password will be sent to the below mentioned email address");
+		
+		String msg = forgot_pwd.reset_reqest_success_msg.getText();
+		
+		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		browser_factory.navigate_to(driver, config.mailinator_url());
-		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
-		ForgotPassword_page.mailinator_go.click();
-
-		for (int i = 0; i < ForgotPassword_page.table_list.size(); i++) {
-
-			if (ForgotPassword_page.table_list.get(i).getText().contains("Forget something")) {
-				// System.out.println(ForgotPassword_page.table_list.get(i).getText());
-				ForgotPassword_page.table_list.get(i).click();
-
-			} else {
-				System.out.println("nothing");
-			}
-		}
+		helper.redirecting_to_mailinator();
 
 		WebElement ele = ForgotPassword_page.frame_list;
+		
 		driver.switchTo().frame(ele);
-
+		
 		String str = ForgotPassword_page.subject.getText();
+		
 		System.out.println(str);
 
-		String parentWindow = driver.getWindowHandle();
-
-		ForgotPassword_page.mail_reset.click();
-
-		Set<String> allwinodws = driver.getWindowHandles();
-
-		for (String childWindows : allwinodws) {
-			if (!childWindows.equals(parentWindow)) {
-				driver.switchTo().window(childWindows);
-				String actualTitle = driver.getTitle();
-
-				if (actualTitle.equalsIgnoreCase("Mailinator")) {
-
-					System.out.println(driver.getTitle());
-
-				}
-			}
-		}
+		// Redirecting to Cyrano
+		helper.redirecting_to_cyrano();
 
 		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
+		
 		ForgotPassword_page.confirmpasswordtxt.sendKeys(config.password());
+		
 		ForgotPassword_page.submit_reset_password.click();
+		
+		Thread.sleep(1000);
+		
+		ForgotPassword_page.finish.click();
+		
+		String tab = driver.getTitle();
+		
+		System.out.println(tab);
 
 	}
 
-	@Test(enabled = false)
+	@Test(enabled = true, priority=3)
+	public void forgotPassword_currentPassword_Manual() throws InterruptedException {
+
+		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
+		
+		String msg = forgot_pwd.reset_reqest_success_msg.getText();
+		
+		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
+
+		// Navigate to Mailinator
+		helper.redirecting_to_mailinator();
+
+		WebElement ele = ForgotPassword_page.frame_list;
+		
+		driver.switchTo().frame(ele);
+		
+		String str = ForgotPassword_page.subject.getText();
+		
+		System.out.println(str);
+
+		// Redirecting to Cyrano
+		browser_factory.navigate_to(driver, config.staging_url());
+		
+		login.valid_login(config.username(), str);
+		
+		ForgotPassword_page.currentpasswordtxt.sendKeys(str);
+		
+		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
+		
+		ForgotPassword_page.confirmpasswordtxt.sendKeys(config.password());
+		
+		ForgotPassword_page.submit_reset_password.click();
+		
+		Thread.sleep(1000);
+		
+		ForgotPassword_page.finish.click();
+		
+		String tab = driver.getTitle();
+		
+		System.out.println(tab);
+
+	}
+
+	@Test(enabled = true, priority=4)
 	public void forgotPassoword_invalidemail() {
 
 		Login_page.username_txt.sendKeys(config.username_frgt_pwd());
+		
 		Login_page.clickon_next.click();
+		
 		String error_msg = forgot_pwd.reset_reqest_error_msg.getText();
+		
 		Assert.assertEquals(error_msg, "User does not exist!");
 
 	}
-	@Test(enabled = true)
-	public void forgotPassword_currentPassword_Manual() {
-		
+
+	@Test(enabled = true, priority=5)
+	public void forgotPassword_invalidCurrentPassword_passwordPage() {
+
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
-		String error_msg = forgot_pwd.reset_reqest_success_msg.getText();
-		Assert.assertEquals(error_msg, "Temporary password will be sent to the below mentioned email address");
+		
+		String msg = forgot_pwd.reset_reqest_success_msg.getText();
+		
+		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		browser_factory.navigate_to(driver, config.mailinator_url());
-		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
-		ForgotPassword_page.mailinator_go.click();
-
-		for (int i = 0; i < ForgotPassword_page.table_list.size(); i++) {
-
-			if (ForgotPassword_page.table_list.get(i).getText().contains("Forget something")) {
-				// System.out.println(ForgotPassword_page.table_list.get(i).getText());
-				ForgotPassword_page.table_list.get(i).click();
-
-			} else {
-				System.out.println("nothing");
-			}
-		}
+		helper.redirecting_to_mailinator();
 
 		WebElement ele = ForgotPassword_page.frame_list;
+		
 		driver.switchTo().frame(ele);
-
+		
 		String str = ForgotPassword_page.subject.getText();
+		
 		System.out.println(str);
+
+		// Redirecting to Cyrano
+		helper.redirecting_to_cyrano();
 		
-		// Cyrano page 
-		browser_factory.navigate_to(driver, config.staging_url());
-		login.valid_login(config.username(), str);
-		ForgotPassword_page.currentpasswordtxt.sendKeys(str);
-		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
-		ForgotPassword_page.confirmpasswordtxt.sendKeys(config.password());
+		login.valid_login(config.username(), "300100");
 		
+		String error_msg = ForgotPassword_page.reset_reqest_error_msg.getText();
 		
-		
-		
-		
-		
-		
+		if(error_msg.contains("Login Failed")) {
+			
+			System.out.println("Condition Passed");
+		}
 	}
 	
+	@Test(enabled = true, priority=6)
+	public void forgotPassword_invalidCurrentPassword_resetPage() {
+		
+		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
+		
+		String msg = forgot_pwd.reset_reqest_success_msg.getText();
+		
+		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
+
+		// Navigate to Mailinator
+		helper.redirecting_to_mailinator();
+
+		WebElement ele = ForgotPassword_page.frame_list;
+		
+		driver.switchTo().frame(ele);
+		
+		String str = ForgotPassword_page.subject.getText();
+		
+		System.out.println(str);
+
+		// Redirecting to Cyrano
+		helper.redirecting_to_cyrano();
+		
+		login.valid_login(config.username(), str);
+		
+		ForgotPassword_page.currentpasswordtxt.sendKeys("300100");
+		
+		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
+		
+		ForgotPassword_page.confirmpasswordtxt.sendKeys(config.password());
+		
+		ForgotPassword_page.submit_reset_password.click();
+		
+		String error_msg = forgot_pwd.reset_reqest_error_msg.getText();
+		
+		Assert.assertEquals(error_msg, "Invalid user credentials!");
+		
+	}
+		
+	@Test(enabled = true, priority=7)
+	public void forgotPassword_different_new_confirmPassword() {
+		
+		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
+		
+		String msg = forgot_pwd.reset_reqest_success_msg.getText();
+		
+		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
+
+		// Navigate to Mailinator
+		helper.redirecting_to_mailinator();
+
+		WebElement ele = ForgotPassword_page.frame_list;
+		
+		driver.switchTo().frame(ele);
+		
+		String str = ForgotPassword_page.subject.getText();
+		
+		System.out.println(str);
+
+		// Redirecting to Cyrano
+		helper.redirecting_to_cyrano();
+		
+		ForgotPassword_page.newpasswordtxt.sendKeys("Test@2222");
+		
+		ForgotPassword_page.confirmpasswordtxt.sendKeys("Test@7777");
+		
+		ForgotPassword_page.submit_reset_password.click();
+		
+		String error_msg = forgot_pwd.reset_reqest_error_msg.getText();
+		
+		Assert.assertEquals(error_msg, "Password mismatch!");
+				
+	}
 	
+	@Test(enabled = true, priority=8)
+	public void forgotPassword_invalid_new_confirmPassword() {
+		
+		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
+		
+		String msg = forgot_pwd.reset_reqest_success_msg.getText();
+		
+		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
+
+		// Navigate to Mailinator
+		helper.redirecting_to_mailinator();
+
+		WebElement ele = ForgotPassword_page.frame_list;
+		
+		driver.switchTo().frame(ele);
+		
+		String str = ForgotPassword_page.subject.getText();
+		
+		System.out.println(str);
+
+		// Redirecting to Cyrano
+		helper.redirecting_to_cyrano();
+		
+		ForgotPassword_page.newpasswordtxt.sendKeys("Test@2222");
+		
+		ForgotPassword_page.confirmpasswordtxt.sendKeys("Test@7777");
+		
+		ForgotPassword_page.submit_reset_password.click();
+		
+		String error_msg = forgot_pwd.reset_reqest_error_msg.getText();
+		
+		Assert.assertEquals(error_msg, "Password mismatch!");
+				
+		
+	}
+		
 	
 }
