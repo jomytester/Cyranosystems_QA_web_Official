@@ -34,7 +34,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		for(int i=0; i<ForgotPassword_page.table_list.size(); i++) {
 			
 			if(ForgotPassword_page.table_list.get(i).getText().contains("Forget something")) {
-				System.out.println(ForgotPassword_page.table_list.get(i).getText());
+				//System.out.println(ForgotPassword_page.table_list.get(i).getText());
 				ForgotPassword_page.table_list.get(i).click();
 				
 			}else {
@@ -52,7 +52,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		
 		ForgotPassword_page.mail_reset.click();
 		
-		/*Set<String> allwinodws = driver.getWindowHandles();
+		Set<String> allwinodws = driver.getWindowHandles();
 
 		for (String childWindows : allwinodws) {
 			if (!childWindows.equals(parentWindow)) {
@@ -65,7 +65,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 				}
 			}			
-		}*/
+		}
 		
 		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
 		ForgotPassword_page.confirmpasswordtxt.sendKeys(config.password());
@@ -94,7 +94,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		for(int i=0; i<ForgotPassword_page.table_list.size(); i++) {
 			
 			if(ForgotPassword_page.table_list.get(i).getText().contains("Forget something")) {
-				System.out.println(ForgotPassword_page.table_list.get(i).getText());
+				//System.out.println(ForgotPassword_page.table_list.get(i).getText());
 				ForgotPassword_page.table_list.get(i).click();
 				
 			}else {
@@ -112,7 +112,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		
 		ForgotPassword_page.mail_reset.click();
 		
-		/*Set<String> allwinodws = driver.getWindowHandles();
+		Set<String> allwinodws = driver.getWindowHandles();
 
 		for (String childWindows : allwinodws) {
 			if (!childWindows.equals(parentWindow)) {
@@ -125,7 +125,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 				}
 			}			
-		}*/
+		}
 		
 		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
 		ForgotPassword_page.confirmpasswordtxt.sendKeys(config.password());
