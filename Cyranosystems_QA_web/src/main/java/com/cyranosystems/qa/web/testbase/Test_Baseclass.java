@@ -29,9 +29,10 @@ public class Test_Baseclass {
 
 		config = new Configuration_Property_file();
 		login = new Login_page(driver);
-		forgot_pwd = new ForgotPassword_page();
+		forgot_pwd = new ForgotPassword_page(driver);
 		browser_factory = new Browser_factory();
 		yourClips = new Produce_yourclips_page();
+		helper = new Helper_factory();
 	}
 
 	

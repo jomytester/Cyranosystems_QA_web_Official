@@ -45,7 +45,7 @@ public class Browser_factory {
 
 	}
 	
-	public void navigate_to(WebDriver driver, String mail_url) {
+	public static void navigate_to(WebDriver driver, String mail_url) {
 		
 		driver.navigate().to(mail_url);
 	}

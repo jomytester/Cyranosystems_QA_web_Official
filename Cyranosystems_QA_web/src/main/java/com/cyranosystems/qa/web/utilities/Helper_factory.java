@@ -28,9 +28,9 @@ public class Helper_factory extends Test_Baseclass {
 		}
 	}
 
-	public void redirecting_to_mailinator() {
+	public void redirecting_to_mailinator(WebDriver driver) {
 
-		browser_factory.navigate_to(driver, config.mailinator_url());
+		Browser_factory.navigate_to(driver, config.mailinator_url());
 		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
 		ForgotPassword_page.mailinator_go.click();
 

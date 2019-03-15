@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.pages.Login_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
-import com.cyranosystems.qa.web.utilities.Helper_factory;
 
 public class Validate_ForgotPassword extends Test_Baseclass {
 
@@ -23,8 +22,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		helper.redirecting_to_mailinator();
-
+		helper.redirecting_to_mailinator(driver);
+		
 		WebElement ele = ForgotPassword_page.frame_list;
 		
 		driver.switchTo().frame(ele);
@@ -52,7 +51,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 	}
 
-	@Test(enabled = true, priority=2)
+	@Test(enabled = false, priority=2)
 	public void forgotPassoword_passwrodPage_validCredential() throws InterruptedException {
 
 		Login_page.username_txt.sendKeys(config.username_frgt_pwd());
@@ -66,7 +65,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		helper.redirecting_to_mailinator();
+		helper.redirecting_to_mailinator(driver);
 
 		WebElement ele = ForgotPassword_page.frame_list;
 		
@@ -95,7 +94,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 	}
 
-	@Test(enabled = true, priority=3)
+	@Test(enabled = false, priority=3)
 	public void forgotPassword_currentPassword_Manual() throws InterruptedException {
 
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
@@ -105,7 +104,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		helper.redirecting_to_mailinator();
+		helper.redirecting_to_mailinator(driver);
 
 		WebElement ele = ForgotPassword_page.frame_list;
 		
@@ -138,7 +137,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 	}
 
-	@Test(enabled = true, priority=4)
+	@Test(enabled = false, priority=4)
 	public void forgotPassoword_invalidemail() {
 
 		Login_page.username_txt.sendKeys(config.username_frgt_pwd());
@@ -151,7 +150,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 	}
 
-	@Test(enabled = true, priority=5)
+	@Test(enabled = false, priority=5)
 	public void forgotPassword_invalidCurrentPassword_passwordPage() {
 
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
@@ -161,7 +160,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		helper.redirecting_to_mailinator();
+		helper.redirecting_to_mailinator(driver);
 
 		WebElement ele = ForgotPassword_page.frame_list;
 		
@@ -184,7 +183,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		}
 	}
 	
-	@Test(enabled = true, priority=6)
+	@Test(enabled = false, priority=6)
 	public void forgotPassword_invalidCurrentPassword_resetPage() {
 		
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
@@ -194,7 +193,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		helper.redirecting_to_mailinator();
+		helper.redirecting_to_mailinator(driver);
 
 		WebElement ele = ForgotPassword_page.frame_list;
 		
@@ -223,7 +222,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		
 	}
 		
-	@Test(enabled = true, priority=7)
+	@Test(enabled = false, priority=7)
 	public void forgotPassword_different_new_confirmPassword() {
 		
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
@@ -233,7 +232,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		helper.redirecting_to_mailinator();
+		helper.redirecting_to_mailinator(driver);
 
 		WebElement ele = ForgotPassword_page.frame_list;
 		
@@ -258,7 +257,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 				
 	}
 	
-	@Test(enabled = true, priority=8)
+	@Test(enabled = false, priority=8)
 	public void forgotPassword_invalid_new_confirmPassword() {
 		
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
@@ -268,7 +267,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
 
 		// Navigate to Mailinator
-		helper.redirecting_to_mailinator();
+		helper.redirecting_to_mailinator(driver);
 
 		WebElement ele = ForgotPassword_page.frame_list;
 		
