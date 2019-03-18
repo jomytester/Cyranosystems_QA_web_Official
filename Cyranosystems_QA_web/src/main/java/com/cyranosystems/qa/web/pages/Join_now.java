@@ -1,0 +1,40 @@
+package com.cyranosystems.qa.web.pages;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
+
+public class Join_now {
+
+	WebDriver driver;
+
+	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Join Now')]")
+	public static WebElement join_now;
+
+	@FindBy(how = How.XPATH, using = "//input[@name='workemail']")
+	public static WebElement enter_workemail;
+
+	@FindBy(how = How.XPATH, using = "//input[@name='reenterworkmail']")
+	public static WebElement re_enter_workemail;
+
+	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
+	public static WebElement submit_btn;
+
+	@FindBy(how = How.XPATH, using = "//iframe[@name='a-tktpfsixk7ws']")
+	public static WebElement frame_list_join_now;
+
+	@FindBy(how = How.XPATH, using = "//span[@class='recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox recaptcha-checkbox-hover recaptcha-checkbox-clearOutline']")
+	public static WebElement check_box;
+
+	public void join_now(String username) {
+
+		join_now.click();
+
+		enter_workemail.sendKeys(username);
+
+		re_enter_workemail.sendKeys(username);
+
+	}
+
+}
