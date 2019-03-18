@@ -7,6 +7,7 @@ import java.util.Set;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
@@ -27,10 +28,12 @@ public class Helper_factory extends Test_Baseclass {
 			System.out.println("Unable to capture screenshot" + e.getMessage());
 		}
 	}
+	
 
-	public void redirecting_to_mailinator(WebDriver driver) {
-
-		Browser_factory.navigate_to(driver, config.mailinator_url());
+	public void redirecting_to_mailinator() {
+		
+		Configuration_Property_file config = new Configuration_Property_file();
+		Browser_factory.navigate_to(config.mailinator_url());
 		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
 		ForgotPassword_page.mailinator_go.click();
 
@@ -44,27 +47,5 @@ public class Helper_factory extends Test_Baseclass {
 				// System.out.println("nothing");
 			}
 		}
-	}
-
-	public void redirecting_to_cyrano() {
-
-		String parentWindow = driver.getWindowHandle();
-
-		ForgotPassword_page.mail_reset.click();
-
-		Set<String> allwinodws = driver.getWindowHandles();
-
-		for (String childWindows : allwinodws) {
-			if (!childWindows.equals(parentWindow)) {
-				driver.switchTo().window(childWindows);
-				String actualTitle = driver.getTitle();
-
-				if (actualTitle.equalsIgnoreCase("Mailinator")) {
-
-					System.out.println(driver.getTitle());
-
-				}
-			}
-		}
-	}
+	}	
 }

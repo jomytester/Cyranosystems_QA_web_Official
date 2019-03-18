@@ -8,9 +8,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
 public class ForgotPassword_page {
-	
+
 	WebDriver driver;
-	
+
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Click Here')]")
 	public static WebElement click_here;
 
@@ -21,15 +21,15 @@ public class ForgotPassword_page {
 	public static WebElement request_reset_link_btn;
 
 	@FindBy(how = How.XPATH, using = "//span[@class='errortxt-cls']")
-	public static WebElement reset_reqest_error_msg; 
+	public static WebElement reset_reqest_error_msg;
 
 	@FindBy(how = How.XPATH, using = "//span[@class='succtxt-cls']")
 	public static WebElement reset_reqest_success_msg;
 
-	@FindBy(how = How.XPATH, using = "//input[@placeholder='Check Any Inbox!']")
+	@FindBy(how = How.XPATH, using = "//div[@class='hidden-sm hidden-xs']//input[@placeholder='View Any Public Inbox - i.e tom, bob, etc']")
 	public static WebElement registered_email;
 
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Go!')]")
+	@FindBy(how = How.XPATH, using = "//div[@class='hidden-sm hidden-xs']//button[@type='button'][contains(text(),'Go!')]")
 	public static WebElement mailinator_go;
 
 	@FindBy(how = How.XPATH, using = "//div[@class='table-responsive']//table//tbody//tr")
@@ -58,12 +58,11 @@ public class ForgotPassword_page {
 
 	@FindBy(how = How.XPATH, using = "//div[@class='d-inline-block']//button")
 	public static WebElement finish;
-	
+
 	public ForgotPassword_page(WebDriver idriver) {
 		this.driver = idriver;
 	}
 
-	
 	public void forgot_password_request(String username) {
 
 		click_here.click();

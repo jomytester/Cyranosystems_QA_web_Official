@@ -14,6 +14,7 @@ import com.cyranosystems.qa.web.utilities.Browser_factory;
 import com.cyranosystems.qa.web.utilities.Configuration_Property_file;
 import com.cyranosystems.qa.web.utilities.Helper_factory;
 
+
 public class Test_Baseclass {
 
 	public WebDriver driver;
@@ -23,6 +24,7 @@ public class Test_Baseclass {
 	public ForgotPassword_page forgot_pwd;
 	public Browser_factory browser_factory;
 	public Produce_yourclips_page yourClips;
+	
 
 	@BeforeSuite
 	public void object_creation() {
@@ -30,7 +32,7 @@ public class Test_Baseclass {
 		config = new Configuration_Property_file();
 		login = new Login_page(driver);
 		forgot_pwd = new ForgotPassword_page(driver);
-		browser_factory = new Browser_factory();
+		browser_factory = new Browser_factory(driver);
 		yourClips = new Produce_yourclips_page();
 		helper = new Helper_factory();
 	}
@@ -58,10 +60,6 @@ public class Test_Baseclass {
 		
 		driver.quit();
 	}
-	
-	
-	
-	
 	
 
 }
