@@ -1,5 +1,6 @@
 package com.cyranosystems.qa.web.testbase;
 
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.ITestResult;
@@ -23,6 +24,7 @@ public class Test_Baseclass {
 	public ForgotPassword_page forgot_pwd;
 	public Browser_factory browser_factory;
 	public Produce_yourclips_page yourClips;
+	
 
 	@BeforeSuite
 	public void object_creation() {
@@ -32,6 +34,7 @@ public class Test_Baseclass {
 		forgot_pwd = new ForgotPassword_page();
 		browser_factory = new Browser_factory();
 		yourClips = new Produce_yourclips_page(driver);
+		
 	}
 
 	@BeforeMethod
