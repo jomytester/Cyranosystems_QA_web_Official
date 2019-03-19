@@ -14,7 +14,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 	// Forgot Password page > With valid credentials (Clicking on Hyper link in
 	// email page in Username page)
 
-	@Test(enabled = true, priority = 1)
+	@Test(enabled = false, priority = 1)
 	public void forgotPassoword_usernamePage_validCredential() throws InterruptedException {
 
 		forgot_pwd.forgot_password_request(config.username_frgt_pwd());
