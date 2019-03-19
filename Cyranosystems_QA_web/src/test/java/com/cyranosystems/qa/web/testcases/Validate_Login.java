@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import com.cyranosystems.qa.web.pages.Login_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
+import com.cyranosystems.qa.web.utilities.Helper_factory;
 
 public class Validate_Login extends Test_Baseclass {
 
@@ -29,7 +30,7 @@ public class Validate_Login extends Test_Baseclass {
 		String error_msg = Login_page.userexist_error_msg.getText();
 		Assert.assertEquals(error_msg,
 				"User does not exist. If you have not signed in to Cyrano before, click 'Join Your Team' to get started. Otherwise, check the spelling of your email address.");
-
+		
 	}
 
 	// Scenario: Log-in with correct username and incorrect password
@@ -38,6 +39,7 @@ public class Validate_Login extends Test_Baseclass {
 	public void login_invalidPassword() {
 
 		login.valid_login(config.username(), "sdfv");
+	
 		String error_msg = Login_page.loginFailed_error_msg.getText();
 
 		if (error_msg.contains("Login failed!")) {
@@ -94,12 +96,14 @@ public class Validate_Login extends Test_Baseclass {
 	}
 
 	// Scenario: Login - Authentication (Press-backbutton after signout)
-	@Test(enabled = false)
+	@Test(enabled = true)
 	public void login_Authentication() {
 
 		login.valid_login(config.username(), config.password());
 
 		String title_signin = driver.getTitle();
+		
+		Helper_factory.captureScreenshot(driver,"login_Authentication");
 
 		Login_page.signout_ellipsis.click();
 
@@ -109,12 +113,12 @@ public class Validate_Login extends Test_Baseclass {
 
 		driver.navigate().back();
 
-		if (title_signin.equals(title_signout)) {
-
-			System.out.println("Condition Failed");
-		} else {
+		if (!title_signin.equals(title_signout)) {
 
 			System.out.println("Condition Passed");
+		} else {
+
+			System.out.println("Condition Failed ");
 		}
 	}
 

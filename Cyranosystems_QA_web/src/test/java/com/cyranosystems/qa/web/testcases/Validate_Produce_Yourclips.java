@@ -12,7 +12,7 @@ public class Validate_Produce_Yourclips extends Test_Baseclass {
 
 		login.valid_login(config.username(), config.password());
 
-		login.navigationToLandingScreen();
+		login.navigationToHomeLandingScreen();
 		Thread.sleep(3000);		
 		yourClips.create_clip("New Automation", "Video");
 		

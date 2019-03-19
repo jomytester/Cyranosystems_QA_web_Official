@@ -9,27 +9,47 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.testng.ITestResult;
+
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 
-public class Helper_factory /*extends Test_Baseclass*/ {
+public class Helper_factory /* extends Test_Baseclass */ {
 
 	WebDriver driver;
-	
-	
+
 	public Helper_factory(WebDriver driver) {
-		
-		this.driver =driver;
+
+		this.driver = driver;
 	}
-	
-	public static void captureScreenshot(WebDriver driver) {
+
+	public static void aftermethodcaptureScreenshot(WebDriver driver, ITestResult result) {
+
+		String method = result.getName();
 
 		try {
 			TakesScreenshot screenshot = (TakesScreenshot) driver;
 
 			File source = screenshot.getScreenshotAs(OutputType.FILE);
 			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-			FileHandler.copy(source, new File("./Screenshots/" + timeStamp + ".png"));
+
+			FileHandler.copy(source, new File("./Screenshots/" + method + timeStamp + ".png"));
+
+		} catch (Exception e) {
+
+			System.out.println("Unable to capture screenshot" + e.getMessage());
+		}
+	}
+
+	public static void captureScreenshot(WebDriver driver, String methodname) {
+
+		try {
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
+
+			File source = screenshot.getScreenshotAs(OutputType.FILE);
+			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
+			FileHandler.copy(source, new File("./Screenshots/" + methodname + timeStamp + ".png"));
 
 		} catch (Exception e) {
 
@@ -38,8 +58,10 @@ public class Helper_factory /*extends Test_Baseclass*/ {
 	}
 	
 	
-    public  void SwitchingTo_WindowHandles(String pageToSwitch) {
-		
+	
+
+	public void SwitchingTo_WindowHandles(String pageToSwitch) {
+
 		String parentWindow = driver.getWindowHandle();
 
 		Set<String> allwinodws = driver.getWindowHandles();
@@ -67,5 +89,4 @@ public class Helper_factory /*extends Test_Baseclass*/ {
 		}
 	}
 
-	
 }

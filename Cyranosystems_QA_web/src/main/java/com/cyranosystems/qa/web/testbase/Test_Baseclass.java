@@ -59,7 +59,7 @@ public class Test_Baseclass {
 	public void browser_close(ITestResult result) {
 
 		if (result.getStatus() == ITestResult.FAILURE) {
-			Helper_factory.captureScreenshot(driver);
+			Helper_factory.aftermethodcaptureScreenshot(driver, result);
 		}
 
 		driver.quit();

@@ -76,7 +76,7 @@ public class Login_page {
 
 	}
 
-	public void navigationToLandingScreen() throws Exception {
+	public void navigationToHomeLandingScreen() throws Exception {
 
 		Thread.sleep(2000);
 		if (driver.getCurrentUrl().equalsIgnoreCase("https://www.cyranolab.io/#/campaign/Mycampaign")) {
