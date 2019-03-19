@@ -8,9 +8,11 @@ import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 public class Validate_JoinNow extends Test_Baseclass{
 	
 	@Test(enabled = true, priority = 1)
-	public void new_team_creation() {
+	public void new_team_creation() throws InterruptedException {
 
 		join_now.join_now("ad20@mailinator.com");
+		
+		Thread.sleep(2000);
 		
 		WebElement ele = join_now.frame_list_join_now;
 

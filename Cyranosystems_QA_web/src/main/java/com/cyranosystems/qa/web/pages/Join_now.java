@@ -21,10 +21,10 @@ public class Join_now {
 	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
 	public static WebElement submit_btn;
 
-	@FindBy(how = How.XPATH, using = "//iframe[@name='a-tktpfsixk7ws']")
+	@FindBy(how = How.XPATH, using = "//iframe[@name='a-y9b1kr3w7hxy']")
 	public static WebElement frame_list_join_now;
 
-	@FindBy(how = How.XPATH, using = "//span[@class='recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox recaptcha-checkbox-hover recaptcha-checkbox-clearOutline']")
+	@FindBy(how = How.XPATH, using = "//span[@class='recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox']//div[@class='recaptcha-checkbox-checkmark']")
 	public static WebElement check_box;
 
 	public void join_now(String username) {
