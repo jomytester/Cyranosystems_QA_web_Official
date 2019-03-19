@@ -18,7 +18,7 @@ public class ForgotPassword_page {
 	public static WebElement request_reset_link_btn;
 
 	@FindBy(how = How.XPATH, using = "//span[@class='errortxt-cls']")
-	public static WebElement reset_reqest_error_msg; 
+	public static WebElement reset_reqest_error_msg;
 
 	@FindBy(how = How.XPATH, using = "//span[@class='succtxt-cls']")
 	public static WebElement reset_reqest_success_msg;
