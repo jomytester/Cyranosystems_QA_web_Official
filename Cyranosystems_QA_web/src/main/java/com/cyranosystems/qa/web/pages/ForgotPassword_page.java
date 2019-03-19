@@ -27,23 +27,6 @@ public class ForgotPassword_page {
 	@FindBy(how = How.XPATH, using = "//span[@class='succtxt-cls']")
 	public static WebElement reset_reqest_success_msg;
 
-	@FindBy(how = How.XPATH, using = "//div[@class='hidden-sm hidden-xs']//input[@placeholder='View Any Public Inbox - i.e tom, bob, etc']")
-	public static WebElement registered_email;
-
-	@FindBy(how = How.XPATH, using = "//div[@class='hidden-sm hidden-xs']//button[@type='button'][contains(text(),'Go!')]")
-	public static WebElement mailinator_go;
-
-	@FindBy(how = How.XPATH, using = "//div[@class='table-responsive']//table//tbody//tr")
-	public static List<WebElement> table_list;
-
-	@FindBy(how = How.XPATH, using = "//iframe[@id='msg_body']")
-	public static WebElement frame_list;
-
-	@FindBy(how = How.XPATH, using = "//table[@class='main']//table[2]//tr//td//a")
-	public static WebElement subject;
-
-	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Reset')]")
-	public static WebElement mail_reset;
 
 	@FindBy(how = How.XPATH, using = "//input[@name='currentpasswordtxt']")
 	public static WebElement currentpasswordtxt;
@@ -74,33 +57,16 @@ public class ForgotPassword_page {
 
 	}
 	
-	public void redirect_to_cyrano() {
+	public void changeNewPassword(String Enter_newpassword , String confirm_newpassword) {
 		
-		String parentWindow = driver.getWindowHandle();
+		ForgotPassword_page.newpasswordtxt.sendKeys(Enter_newpassword ); //config.password()
 
-		Set<String> allwinodws = driver.getWindowHandles();
+		ForgotPassword_page.confirmpasswordtxt.sendKeys(confirm_newpassword); //config.password()
 
-		for (String childWindows : allwinodws) {
-
-			if (!childWindows.equals(parentWindow)) {
-
-				driver.switchTo().window(childWindows);
-
-				String actualTitle = driver.getTitle();
-
-				System.out.println(driver.getTitle());
-
-				if (actualTitle.equalsIgnoreCase("Cyrano")) {
-
-				} else {
-
-					System.out.println("error in handling window");
-
-				}
-
-			}
-
-		}
+		ForgotPassword_page.submit_reset_password.click();
 	}
+
+	
+	
 
 }

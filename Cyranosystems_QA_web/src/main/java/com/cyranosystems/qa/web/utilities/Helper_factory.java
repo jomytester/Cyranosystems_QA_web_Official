@@ -12,8 +12,16 @@ import org.openqa.selenium.io.FileHandler;
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 
-public class Helper_factory extends Test_Baseclass {
+public class Helper_factory /*extends Test_Baseclass*/ {
 
+	WebDriver driver;
+	
+	
+	public Helper_factory(WebDriver driver) {
+		
+		this.driver =driver;
+	}
+	
 	public static void captureScreenshot(WebDriver driver) {
 
 		try {
@@ -29,23 +37,35 @@ public class Helper_factory extends Test_Baseclass {
 		}
 	}
 	
-
-	public void redirecting_to_mailinator() {
+	
+    public  void SwitchingTo_WindowHandles(String pageToSwitch) {
 		
-		Configuration_Property_file config = new Configuration_Property_file();
-		Browser_factory.navigate_to(config.mailinator_url());
-		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
-		ForgotPassword_page.mailinator_go.click();
+		String parentWindow = driver.getWindowHandle();
 
-		for (int i = 0; i < ForgotPassword_page.table_list.size(); i++) {
+		Set<String> allwinodws = driver.getWindowHandles();
 
-			if (ForgotPassword_page.table_list.get(i).getText().contains("Forget something")) {
-				// System.out.println(ForgotPassword_page.table_list.get(i).getText());
-				ForgotPassword_page.table_list.get(i).click();
+		for (String childWindows : allwinodws) {
 
-			} else {
-				// System.out.println("nothing");
+			if (!childWindows.equals(parentWindow)) {
+
+				driver.switchTo().window(childWindows);
+
+				String actualTitle = driver.getTitle();
+
+				System.out.println(driver.getTitle());
+
+				if (actualTitle.equalsIgnoreCase(pageToSwitch)) {
+
+				} else {
+
+					System.out.println("error in handling window");
+
+				}
+
 			}
+
 		}
-	}	
+	}
+
+	
 }
