@@ -31,21 +31,19 @@ public class Test_Baseclass {
 		login = new Login_page(driver);
 		forgot_pwd = new ForgotPassword_page();
 		browser_factory = new Browser_factory();
-		yourClips = new Produce_yourclips_page();
+		yourClips = new Produce_yourclips_page(driver);
 	}
 
-	
-	
 	@BeforeMethod
 	public void initialisation() {
-		
+
 		driver = Browser_factory.start_browser(config.browser_value(), config.staging_url());
-		
+
 		login = PageFactory.initElements(driver, Login_page.class);
-		
+
 		forgot_pwd = PageFactory.initElements(driver, ForgotPassword_page.class);
-		yourClips= PageFactory.initElements(driver, Produce_yourclips_page.class);
-		
+		yourClips = PageFactory.initElements(driver, Produce_yourclips_page.class);
+
 	}
 
 	@AfterMethod
@@ -54,13 +52,8 @@ public class Test_Baseclass {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			Helper_factory.captureScreenshot(driver);
 		}
-		
+
 		driver.quit();
 	}
-	
-	
-	
-	
-	
 
 }

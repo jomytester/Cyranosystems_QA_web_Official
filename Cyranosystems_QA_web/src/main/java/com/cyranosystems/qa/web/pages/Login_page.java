@@ -55,17 +55,14 @@ public class Login_page {
 
 	@FindBy(how = How.ID, using = "passwordNext")
 	public static WebElement gmailPasswordNext_btn;
-	
-	
-	@FindBy(how=How.CLASS_NAME, using="ng-fa-icon")
+
+	@FindBy(how = How.CLASS_NAME, using = "ng-fa-icon")
 	public static WebElement moveToonepointO_btn;
 
 	public Login_page(WebDriver driver) {
 
 		this.driver = driver;
 	}
-
-	
 
 	public void valid_login(String username, String password) {
 
@@ -77,6 +74,14 @@ public class Login_page {
 
 		login_btn.click();
 
+	}
+
+	public void navigationToLandingScreen() throws Exception {
+
+		Thread.sleep(2000);
+		if (driver.getCurrentUrl().equalsIgnoreCase("https://www.cyranolab.io/#/campaign/Mycampaign")) {
+			Login_page.moveToonepointO_btn.click();
+		}
 	}
 
 	public void sso_login(String username, String password) throws InterruptedException {
