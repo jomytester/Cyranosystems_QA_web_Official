@@ -48,7 +48,8 @@ public class Validate_Login extends Test_Baseclass {
 
 	}
 
-	// Scenario: Log-in with correct username and incorrect password (lock the account)
+	// Scenario: Log-in with correct username and incorrect password (lock the
+	// account)
 
 	@Test(enabled = false)
 	public void login_lockaccount() throws InterruptedException {
@@ -128,7 +129,7 @@ public class Validate_Login extends Test_Baseclass {
 		login.valid_login(config.username(), config.password());
 
 	}
-	
+
 	// Scenario: Login - Learnmore
 
 	@Test(enabled = false)
@@ -155,12 +156,10 @@ public class Validate_Login extends Test_Baseclass {
 
 		}
 	}
-	
-	
-	
+
 	@Test(enabled = false)
 	public void login_ssologin() throws InterruptedException {
-		
+
 		login.sso_login(config.sso_userid(), config.sso_gmail_password());
 	}
 

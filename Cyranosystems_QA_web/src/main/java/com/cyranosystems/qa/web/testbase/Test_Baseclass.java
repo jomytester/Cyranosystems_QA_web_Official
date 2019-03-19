@@ -15,7 +15,6 @@ import com.cyranosystems.qa.web.utilities.Browser_factory;
 import com.cyranosystems.qa.web.utilities.Configuration_Property_file;
 import com.cyranosystems.qa.web.utilities.Helper_factory;
 
-
 public class Test_Baseclass {
 
 	public WebDriver driver;
@@ -26,7 +25,6 @@ public class Test_Baseclass {
 	public Browser_factory browser_factory;
 	public Produce_yourclips_page yourClips;
 	public Join_now join_now;
-	
 
 	@BeforeSuite
 	public void object_creation() {
@@ -35,25 +33,21 @@ public class Test_Baseclass {
 		login = new Login_page(driver);
 		forgot_pwd = new ForgotPassword_page(driver);
 		browser_factory = new Browser_factory(driver);
-		yourClips = new Produce_yourclips_page();
+		yourClips = new Produce_yourclips_page(driver);
 		helper = new Helper_factory();
-		join_now = new Join_now();
+		join_now = new Join_now(driver);
+
 	}
 
-	
-	
 	@BeforeMethod
 	public void initialisation() {
-		
+
 		driver = Browser_factory.start_browser(config.browser_value(), config.staging_url());
-		
 		login = PageFactory.initElements(driver, Login_page.class);
-		
 		forgot_pwd = PageFactory.initElements(driver, ForgotPassword_page.class);
-		
-		yourClips= PageFactory.initElements(driver, Produce_yourclips_page.class);
-		
+		yourClips = PageFactory.initElements(driver, Produce_yourclips_page.class);
 		join_now = PageFactory.initElements(driver, Join_now.class);
+
 	}
 
 	@AfterMethod
@@ -62,9 +56,8 @@ public class Test_Baseclass {
 		if (result.getStatus() == ITestResult.FAILURE) {
 			Helper_factory.captureScreenshot(driver);
 		}
-		
+
 		driver.quit();
 	}
-	
 
 }
