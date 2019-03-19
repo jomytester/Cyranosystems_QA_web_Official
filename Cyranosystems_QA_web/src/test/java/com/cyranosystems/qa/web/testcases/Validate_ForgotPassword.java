@@ -38,32 +38,10 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		System.out.println(str);
 
 		ForgotPassword_page.mail_reset.click();
+		
+		//Redirect to Cyrano
 
-		String parentWindow = driver.getWindowHandle();
-
-		Set<String> allwinodws = driver.getWindowHandles();
-
-		for (String childWindows : allwinodws) {
-
-			if (!childWindows.equals(parentWindow)) {
-
-				driver.switchTo().window(childWindows);
-
-				String actualTitle = driver.getTitle();
-
-				System.out.println(driver.getTitle());
-
-				if (actualTitle.equalsIgnoreCase("Cyrano")) {
-
-				} else {
-
-					System.out.println("error in handling window");
-
-				}
-
-			}
-
-		}
+		forgot_pwd.redirect_to_cyrano();
 
 		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
 
@@ -110,31 +88,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 		// Redirecting to Cyrano
 
-		String parentWindow = driver.getWindowHandle();
-
-		Set<String> allwinodws = driver.getWindowHandles();
-
-		for (String childWindows : allwinodws) {
-
-			if (!childWindows.equals(parentWindow)) {
-
-				driver.switchTo().window(childWindows);
-
-				String actualTitle = driver.getTitle();
-
-				System.out.println(driver.getTitle());
-
-				if (actualTitle.equalsIgnoreCase("Cyrano")) {
-
-				} else {
-
-					System.out.println("error in handling window");
-
-				}
-
-			}
-
-		}
+		forgot_pwd.redirect_to_cyrano();
 
 		ForgotPassword_page.newpasswordtxt.sendKeys(config.password());
 

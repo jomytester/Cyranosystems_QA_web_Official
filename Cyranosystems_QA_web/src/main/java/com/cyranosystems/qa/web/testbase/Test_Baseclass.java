@@ -8,7 +8,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
-import com.cyranosystems.qa.web.pages.Join_now;
 import com.cyranosystems.qa.web.pages.Login_page;
 import com.cyranosystems.qa.web.pages.Produce_yourclips_page;
 import com.cyranosystems.qa.web.utilities.Browser_factory;
@@ -24,7 +23,7 @@ public class Test_Baseclass {
 	public ForgotPassword_page forgot_pwd;
 	public Browser_factory browser_factory;
 	public Produce_yourclips_page yourClips;
-	public Join_now join_now;
+	
 
 	@BeforeSuite
 	public void object_creation() {
@@ -35,7 +34,7 @@ public class Test_Baseclass {
 		browser_factory = new Browser_factory(driver);
 		yourClips = new Produce_yourclips_page(driver);
 		helper = new Helper_factory();
-		join_now = new Join_now(driver);
+		
 
 	}
 
@@ -46,7 +45,7 @@ public class Test_Baseclass {
 		login = PageFactory.initElements(driver, Login_page.class);
 		forgot_pwd = PageFactory.initElements(driver, ForgotPassword_page.class);
 		yourClips = PageFactory.initElements(driver, Produce_yourclips_page.class);
-		join_now = PageFactory.initElements(driver, Join_now.class);
+		
 
 	}
 
