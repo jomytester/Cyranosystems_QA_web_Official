@@ -1,6 +1,7 @@
 package com.cyranosystems.qa.web.pages;
 
 import java.util.List;
+import java.util.Set;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -71,6 +72,35 @@ public class ForgotPassword_page {
 
 		request_reset_link_btn.click();
 
+	}
+	
+	public void redirect_to_cyrano() {
+		
+		String parentWindow = driver.getWindowHandle();
+
+		Set<String> allwinodws = driver.getWindowHandles();
+
+		for (String childWindows : allwinodws) {
+
+			if (!childWindows.equals(parentWindow)) {
+
+				driver.switchTo().window(childWindows);
+
+				String actualTitle = driver.getTitle();
+
+				System.out.println(driver.getTitle());
+
+				if (actualTitle.equalsIgnoreCase("Cyrano")) {
+
+				} else {
+
+					System.out.println("error in handling window");
+
+				}
+
+			}
+
+		}
 	}
 
 }
