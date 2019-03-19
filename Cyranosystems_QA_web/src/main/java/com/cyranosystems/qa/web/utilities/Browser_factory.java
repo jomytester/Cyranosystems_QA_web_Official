@@ -9,6 +9,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 public class Browser_factory {
 
 	static WebDriver driver;
+	
+	public Browser_factory(WebDriver driver) {
+		this.driver = driver;
+	}
 
 	public static WebDriver start_browser(String browser_name, String url) {
 
@@ -33,23 +37,24 @@ public class Browser_factory {
 			
 			System.out.println("Unable to start browser" +e.getMessage());
 		}
-
-		
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
 		driver.manage().deleteAllCookies();
 		driver.get(url);
 		return driver;
 
 	}
 	
-	public void navigate_to(WebDriver driver, String mail_url) {
+	public static WebDriver navigate_to(String mail_url) {
 		
 		driver.navigate().to(mail_url);
+		return null;
+		
 	}
-	
+
+
 	
 
 }
