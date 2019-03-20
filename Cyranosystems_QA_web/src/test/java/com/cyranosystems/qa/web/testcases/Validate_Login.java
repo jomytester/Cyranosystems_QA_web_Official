@@ -26,7 +26,7 @@ public class Validate_Login extends Test_Baseclass {
 	public void login_invalidUsername() {
 
 		Login_page.username_txt.sendKeys("jasdaszfdcad@gmail.com");
-		Login_page.clickon_next.click();
+		Login_page.login_clickon_next_btn.click();
 		String error_msg = Login_page.userexist_error_msg.getText();
 		Assert.assertEquals(error_msg,
 				"User does not exist. If you have not signed in to Cyrano before, click 'Join Your Team' to get started. Otherwise, check the spelling of your email address.");
@@ -128,7 +128,7 @@ public class Validate_Login extends Test_Baseclass {
 	public void login_backtosignin() {
 
 		Login_page.username_txt.sendKeys(config.username());
-		Login_page.clickon_next.click();
+		Login_page.login_clickon_next_btn.click();
 		Login_page.backToSignin_btn.click();
 		login.valid_login(config.username(), config.password());
 

@@ -52,7 +52,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         Login_page.username_txt.sendKeys(config.username_frgt_pwd());
         
-        Login_page.clickon_next.click();
+        Login_page.login_clickon_next_btn.click();
         
         forgetpassword.forgot_password_request(config.username_frgt_pwd());
         
@@ -140,7 +140,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         Login_page.username_txt.sendKeys(config.username_frgt_pwd());
         
-        Login_page.clickon_next.click();
+        Login_page.login_clickon_next_btn.click();
         
         String error_msg = forgetpassword.reset_reqest_error_msg.getText();
         

@@ -15,7 +15,7 @@ public class Login_page {
 	public static WebElement username_txt;
 
 	@FindBy(how = How.ID, using = "next")
-	public static WebElement clickon_next;
+	public static WebElement login_clickon_next_btn;
 
 	@FindBy(how = How.NAME, using = "password")
 	public static WebElement password_txt;
@@ -68,7 +68,7 @@ public class Login_page {
 
 		username_txt.sendKeys(username);
 
-		clickon_next.click();
+		login_clickon_next_btn.click();
 
 		password_txt.sendKeys(password);
 
@@ -88,7 +88,7 @@ public class Login_page {
 
 		username_txt.sendKeys(username);
 
-		clickon_next.click();
+		login_clickon_next_btn.click();
 
 		String parentwindow = driver.getWindowHandle();
 
