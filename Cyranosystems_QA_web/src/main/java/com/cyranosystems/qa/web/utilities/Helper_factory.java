@@ -9,19 +9,47 @@ import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
+import org.testng.ITestResult;
+
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 
-public class Helper_factory extends Test_Baseclass {
+public class Helper_factory /* extends Test_Baseclass */ {
 
-	public static void captureScreenshot(WebDriver driver) {
+	WebDriver driver;
+
+	public Helper_factory(WebDriver driver) {
+
+		this.driver = driver;
+	}
+
+	public static void aftermethodcaptureScreenshot(WebDriver driver, ITestResult result) {
+
+		String method = result.getName();
 
 		try {
 			TakesScreenshot screenshot = (TakesScreenshot) driver;
 
 			File source = screenshot.getScreenshotAs(OutputType.FILE);
 			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
-			FileHandler.copy(source, new File("./Screenshots/" + timeStamp + ".png"));
+
+			FileHandler.copy(source, new File("./Screenshots/" + method + timeStamp + ".png"));
+
+		} catch (Exception e) {
+
+			System.out.println("Unable to capture screenshot" + e.getMessage());
+		}
+	}
+
+	public static void captureScreenshot(WebDriver driver, String methodname) {
+
+		try {
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
+
+			File source = screenshot.getScreenshotAs(OutputType.FILE);
+			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+
+			FileHandler.copy(source, new File("./Screenshots/" + methodname + timeStamp + ".png"));
 
 		} catch (Exception e) {
 
@@ -29,23 +57,36 @@ public class Helper_factory extends Test_Baseclass {
 		}
 	}
 	
+	
+	
 
-	public void redirecting_to_mailinator() {
-		
-		Configuration_Property_file config = new Configuration_Property_file();
-		Browser_factory.navigate_to(config.mailinator_url());
-		ForgotPassword_page.registered_email.sendKeys(config.username_frgt_pwd());
-		ForgotPassword_page.mailinator_go.click();
+	public void SwitchingTo_WindowHandles(String pageToSwitch) {
 
-		for (int i = 0; i < ForgotPassword_page.table_list.size(); i++) {
+		String parentWindow = driver.getWindowHandle();
 
-			if (ForgotPassword_page.table_list.get(i).getText().contains("Forget something")) {
-				// System.out.println(ForgotPassword_page.table_list.get(i).getText());
-				ForgotPassword_page.table_list.get(i).click();
+		Set<String> allwinodws = driver.getWindowHandles();
 
-			} else {
-				// System.out.println("nothing");
+		for (String childWindows : allwinodws) {
+
+			if (!childWindows.equals(parentWindow)) {
+
+				driver.switchTo().window(childWindows);
+
+				String actualTitle = driver.getTitle();
+
+				System.out.println(driver.getTitle());
+
+				if (actualTitle.equalsIgnoreCase(pageToSwitch)) {
+
+				} else {
+
+					System.out.println("error in handling window");
+
+				}
+
 			}
+
 		}
-	}	
+	}
+
 }

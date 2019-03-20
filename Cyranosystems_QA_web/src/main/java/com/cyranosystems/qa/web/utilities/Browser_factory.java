@@ -10,9 +10,7 @@ public class Browser_factory {
 
 	static WebDriver driver;
 	
-	public Browser_factory(WebDriver driver) {
-		this.driver = driver;
-	}
+	
 
 	public static WebDriver start_browser(String browser_name, String url) {
 
@@ -47,12 +45,9 @@ public class Browser_factory {
 
 	}
 	
-	public static WebDriver navigate_to(String mail_url) {
+	
 		
-		driver.navigate().to(mail_url);
-		return null;
-		
-	}
+
 
 
 	
