@@ -13,7 +13,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in With valid username and password
 
-	@Test(enabled = false)
+	@Test(enabled = true , priority = 8)
 	public void login_validcredential() {
 
 		login.valid_login(config.username(), config.password());
@@ -22,7 +22,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in with incorrect username and click next
 
-	@Test(enabled = false)
+	@Test(enabled = true , priority = 8)
 	public void login_invalidUsername() {
 
 		Login_page.username_txt.sendKeys("jasdaszfdcad@gmail.com");
@@ -35,7 +35,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in with correct username and incorrect password
 
-	@Test(enabled = false)
+	@Test(enabled = true , priority = 7)
 	public void login_invalidPassword() {
 
 		login.valid_login(config.username(), "sdfv");
@@ -53,7 +53,7 @@ public class Validate_Login extends Test_Baseclass {
 	// Scenario: Log-in with correct username and incorrect password (lock the
 	// account)
 
-	@Test(enabled = false)
+	@Test(enabled = true , priority = 6)
 	public void login_lockaccount() throws InterruptedException {
 
 		login.valid_login(config.username(), "sdfv");
@@ -80,7 +80,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario : Login-handles case sensitive
 
-	@Test(enabled = false)
+	@Test(enabled = true , priority = 5)
 	public void login_caseSensitive_() {
 
 		login.valid_login(config.username().toUpperCase(), config.password().toUpperCase());
@@ -96,14 +96,13 @@ public class Validate_Login extends Test_Baseclass {
 	}
 
 	// Scenario: Login - Authentication (Press-backbutton after signout)
-	@Test(enabled = true)
+	@Test(enabled = true , priority = 4)
 	public void login_Authentication() {
 
 		login.valid_login(config.username(), config.password());
 
 		String title_signin = driver.getTitle();
 		
-		Helper_factory.captureScreenshot(driver,"login_Authentication");
 
 		Login_page.signout_ellipsis.click();
 
@@ -124,7 +123,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Login - Backtosignin
 
-	@Test(enabled = false)
+	@Test(enabled = true , priority = 3)
 	public void login_backtosignin() {
 
 		Login_page.username_txt.sendKeys(config.username());
@@ -136,7 +135,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Login - Learnmore
 
-	@Test(enabled = false)
+	@Test(enabled = true , priority = 2)
 	public void login_Learnmore() throws InterruptedException {
 
 		String parentWindow = driver.getWindowHandle();
@@ -161,7 +160,7 @@ public class Validate_Login extends Test_Baseclass {
 		}
 	}
 
-	@Test(enabled = false)
+	@Test(priority = 1 , enabled = true)
 	public void login_ssologin() throws InterruptedException {
 
 		login.sso_login(config.sso_userid(), config.sso_gmail_password());
