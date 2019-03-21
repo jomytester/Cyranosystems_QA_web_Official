@@ -1,5 +1,8 @@
 package com.cyranosystems.qa.web.pages;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.util.List;
 
 import org.openqa.selenium.Alert;
@@ -7,12 +10,17 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import com.cyranosystems.qa.web.utilities.Helper_factory;
 
 public class Produce_yourclips_page {
 
 	WebDriver driver;
 
-	public Alert alert;
+	
+	protected Helper_factory helper = new Helper_factory(driver);
 
 	@FindBy(how = How.XPATH, using = "//span[contains(text(),'PRODUCE')]")
 	public static WebElement clickOnProduce_btn;
@@ -53,15 +61,12 @@ public class Produce_yourclips_page {
 	@FindBy(how = How.XPATH, using = "//input[@id='uploadBtn']")
 	public static WebElement browserupload_btn;
 
-	@FindBy(how = How.XPATH, using = "//[@id=\"record\"]")
-	public static WebElement start_recordingFrame_btn;
-
 	public Produce_yourclips_page(WebDriver driver) {
 
 		this.driver = driver;
 	}
 
-	public void create_clip(String Clipname, String recordingType) throws InterruptedException {
+	public void create_clip(String Clipname, String recordingType) throws Exception  {
 
 		clickOnProduce_btn.click();
 		clickOnYourClips_btn.click();
@@ -75,14 +80,21 @@ public class Produce_yourclips_page {
 			recordVideo_radiobtn.click();
 			startRecording_btn.click();
 			Thread.sleep(2000);
-			start_recordingFrame_btn.click();
+			
+			helper.Handle_allowBlock_popup("allow");
+			
+			Thread.sleep(6000);
+			
+			WebDriverWait explicitWait = new WebDriverWait(driver,30);
+			explicitWait.until(ExpectedConditions.visibilityOf(startRecording_btn));
+     		startRecording_btn.click();
 			
 
 		} else if (recordingType.equalsIgnoreCase("Audio")) {
 
 			recordAudio_radiobtn.click();
 			startRecording_btn.click();
-			start_recordingFrame_btn.click();
+
 
 		} else if (recordingType.equalsIgnoreCase("URL")) {
 

@@ -1,5 +1,8 @@
 package com.cyranosystems.qa.web.utilities;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.event.KeyEvent;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -16,77 +19,106 @@ import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 
 public class Helper_factory /* extends Test_Baseclass */ {
 
-	WebDriver driver;
+    WebDriver driver;
 
-	public Helper_factory(WebDriver driver) {
+    public Helper_factory(WebDriver driver) {
 
-		this.driver = driver;
-	}
+        this.driver = driver;
+    }
 
-	public static void aftermethodcaptureScreenshot(WebDriver driver, ITestResult result) {
+    public static void aftermethodcaptureScreenshot(WebDriver driver, ITestResult result) {
 
-		String method = result.getName();
+        String method = result.getName();
 
-		try {
-			TakesScreenshot screenshot = (TakesScreenshot) driver;
+        try {
+            TakesScreenshot screenshot = (TakesScreenshot) driver;
 
-			File source = screenshot.getScreenshotAs(OutputType.FILE);
-			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+            File source = screenshot.getScreenshotAs(OutputType.FILE);
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
-			FileHandler.copy(source, new File("./Screenshots/" + method + timeStamp + ".png"));
+            FileHandler.copy(source, new File("./Screenshots/" + method + timeStamp + ".png"));
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			System.out.println("Unable to capture screenshot" + e.getMessage());
-		}
-	}
+            System.out.println("Unable to capture screenshot" + e.getMessage());
+        }
+    }
 
-	public static void captureScreenshot(WebDriver driver, String methodname) {
+    public static void captureScreenshot(WebDriver driver, String methodname) {
 
-		try {
-			TakesScreenshot screenshot = (TakesScreenshot) driver;
+        try {
+            TakesScreenshot screenshot = (TakesScreenshot) driver;
 
-			File source = screenshot.getScreenshotAs(OutputType.FILE);
-			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+            File source = screenshot.getScreenshotAs(OutputType.FILE);
+            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
-			FileHandler.copy(source, new File("./Screenshots/" + methodname + timeStamp + ".png"));
+            FileHandler.copy(source, new File("./Screenshots/" + methodname + timeStamp + ".png"));
 
-		} catch (Exception e) {
+        } catch (Exception e) {
 
-			System.out.println("Unable to capture screenshot" + e.getMessage());
-		}
-	}
-	
-	
-	
+            System.out.println("Unable to capture screenshot" + e.getMessage());
+        }
+    }
 
-	public void SwitchingTo_WindowHandles(String pageToSwitch) {
+    public void SwitchingTo_WindowHandles(String pageToSwitch) {
 
-		String parentWindow = driver.getWindowHandle();
+        String parentWindow = driver.getWindowHandle();
 
-		Set<String> allwinodws = driver.getWindowHandles();
+        Set<String> allwinodws = driver.getWindowHandles();
 
-		for (String childWindows : allwinodws) {
+        for (String childWindows : allwinodws) {
 
-			if (!childWindows.equals(parentWindow)) {
+            if (!childWindows.equals(parentWindow)) {
 
-				driver.switchTo().window(childWindows);
+                driver.switchTo().window(childWindows);
 
-				String actualTitle = driver.getTitle();
+                String actualTitle = driver.getTitle();
 
-				System.out.println(driver.getTitle());
+                System.out.println(driver.getTitle());
 
-				if (actualTitle.equalsIgnoreCase(pageToSwitch)) {
+                if (actualTitle.equalsIgnoreCase(pageToSwitch)) {
 
-				} else {
+                } else {
 
-					System.out.println("error in handling window");
+                    System.out.println("error in handling window");
 
-				}
+                }
 
-			}
+            }
 
-		}
-	}
+        }
+    }
+
+    public void Handle_allowBlock_popup(String operation_To_be_Performed) {
+
+
+        if (operation_To_be_Performed.equalsIgnoreCase("Allow")) {
+            try {
+                Robot robot = new Robot();
+                robot.keyPress(KeyEvent.VK_TAB);
+                robot.keyRelease(KeyEvent.VK_TAB);
+                robot.keyPress(KeyEvent.VK_ENTER);
+                robot.keyRelease(KeyEvent.VK_ENTER);
+            } catch (Exception e) {
+
+                System.out.println("Unable to click on allow button " + e.getMessage());
+            }
+        } else if (operation_To_be_Performed.equalsIgnoreCase("Block")) {
+
+            try {
+                Robot robot = new Robot();
+                robot.keyPress(KeyEvent.VK_TAB);
+                robot.keyRelease(KeyEvent.VK_TAB);
+                robot.keyPress(KeyEvent.VK_TAB);
+                robot.keyRelease(KeyEvent.VK_TAB);
+                robot.keyPress(KeyEvent.VK_ENTER);
+                robot.keyRelease(KeyEvent.VK_ENTER);
+            } catch (Exception e) {
+
+                System.out.println("Unable to click on allow button " + e.getMessage());
+            }
+
+        }
+    }
 
 }
