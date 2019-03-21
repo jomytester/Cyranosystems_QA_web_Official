@@ -30,7 +30,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        mailinator_handler.MailinatorforgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
         
         helper.SwitchingTo_WindowHandles("Cyrano");
         
@@ -46,7 +46,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
     }
 
-    @Test(enabled = true, priority = 2)
+    @Test(enabled = false, priority = 2)
     
     public void forgotPassoword_passwrodPage_validCredential() throws InterruptedException {
         
@@ -64,17 +64,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.MailinatorforgetPassword_resetbutton;
+        driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        driver.switchTo().frame(ele);
-        
-        String str = mailinator_handler.subject.getText();
-        
-        System.out.println(str);
-        
-        mailinator_handler.MailinatorforgetPassword_resetbutton.click();
-        
-        // Redirecting to Cyrano
+        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
         
         helper.SwitchingTo_WindowHandles("Cyrano");
         
@@ -84,13 +76,13 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         ForgotPassword_page.finish.click();
         
-        String tab = driver.getTitle();
+        String VerfiyTitle = driver.getTitle();
         
-        System.out.println(tab);
+        System.out.println(VerfiyTitle);
         
     }
 
-    @Test(enabled = false, priority = 3)
+    @Test(enabled = true, priority = 3)
     
     public void forgotPassword_currentPassword_Manual() throws InterruptedException {
         
@@ -104,11 +96,11 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.MailinatorforgetPassword_resetbutton;
+        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
         
         driver.switchTo().frame(ele);
         
-        String str = mailinator_handler.subject.getText();
+        String str = mailinator_handler.mailnator_email_subject.getText();
         
         System.out.println(str);
         
@@ -132,7 +124,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         System.out.println(tab);
     }
 
-    @Test(enabled = false, priority = 4)
+    @Test(enabled = true, priority = 4)
     
     public void forgotPassoword_invalidemail() {
         
@@ -147,7 +139,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         Assert.assertEquals(error_msg, "User does not exist!");
     }
 
-    @Test(enabled = false, priority = 5)
+    @Test(enabled = true, priority = 5)
     public void forgotPassword_invalidCurrentPassword_passwordPage() throws InterruptedException {
        
         forgetpassword.forgot_password_request(config.username_frgt_pwd());
@@ -162,11 +154,11 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
        
-        WebElement ele = mailinator_handler.MailinatorforgetPassword_resetbutton;
+        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
         
         driver.switchTo().frame(ele);
         
-        String str = mailinator_handler.subject.getText();
+        String str = mailinator_handler.mailnator_email_subject.getText();
        
         System.out.println(str);
        
@@ -190,7 +182,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         }
     }
 
-    @Test(enabled = false, priority = 6)
+    @Test(enabled = true, priority = 6)
     public void forgotPassword_invalidCurrentPassword_resetPage() throws InterruptedException {
         
         forgetpassword.forgot_password_request(config.username_frgt_pwd());
@@ -203,11 +195,11 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.MailinatorforgetPassword_resetbutton;
+        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
         
         driver.switchTo().frame(ele);
         
-        String str = mailinator_handler.subject.getText();
+        String str = mailinator_handler.mailnator_email_subject.getText();
         
         System.out.println(str);
         
@@ -232,7 +224,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         Assert.assertEquals(error_msg, "Invalid user credentials!");
     }
 
-    @Test(enabled = false, priority = 7)
+    @Test(enabled = true, priority = 7)
     public void forgotPassword_different_newPassword_confirmPassword() throws InterruptedException {
        
         forgetpassword.forgot_password_request(config.username_frgt_pwd());
@@ -245,15 +237,15 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.MailinatorforgetPassword_resetbutton;
+        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
         
         driver.switchTo().frame(ele);
         
-        String str = mailinator_handler.subject.getText();
+        String str = mailinator_handler.mailnator_email_subject.getText();
         
         System.out.println(str);
         
-        mailinator_handler.MailinatorforgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
         
         // Redirecting to Cyrano
         
@@ -272,7 +264,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         Assert.assertEquals(error_msg, "Password mismatch!");
     }
 
-    @Test(enabled = false, priority = 8)
+    @Test(enabled = true, priority = 8)
     public void forgotPassword_invalid_newPassword_confirmPassword() throws InterruptedException {
         
         forgetpassword.forgot_password_request(config.username_frgt_pwd());
@@ -285,15 +277,15 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.MailinatorforgetPassword_resetbutton;
+        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
         
         driver.switchTo().frame(ele);
         
-        String str = mailinator_handler.subject.getText();
+        String str = mailinator_handler.mailnator_email_subject.getText();
         
         System.out.println(str);
         
-        mailinator_handler.MailinatorforgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
         
         // Redirecting to Cyrano
         
@@ -319,7 +311,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     }
     
 
-    @Test(enabled = false, priority = 9)
+    @Test(enabled = true, priority = 9)
     public void forgotPassword_invalid_newPassword() throws InterruptedException {
         
         forgetpassword.forgot_password_request(config.username_frgt_pwd());
@@ -332,15 +324,15 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.MailinatorforgetPassword_resetbutton;
+        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
         
         driver.switchTo().frame(ele);
         
-        String str = mailinator_handler.subject.getText();
+        String str = mailinator_handler.mailnator_email_subject.getText();
         
         System.out.println(str);
         
-        mailinator_handler.MailinatorforgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
         
         // Redirecting to Cyrano
         
@@ -367,7 +359,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     
 
     
-    @Test(enabled = false, priority = 10)
+    @Test(enabled = true, priority = 10)
     public void forgotPassword_invalid_currentPassword() throws InterruptedException {
         
         forgetpassword.forgot_password_request(config.username_frgt_pwd());
@@ -381,15 +373,15 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.MailinatorforgetPassword_resetbutton;
+        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
         
         driver.switchTo().frame(ele);
         
-        String str = mailinator_handler.subject.getText();
+        String str = mailinator_handler.mailnator_email_subject.getText();
         
         System.out.println(str);
         
-        mailinator_handler.MailinatorforgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
         
         // Redirecting to Cyrano
         

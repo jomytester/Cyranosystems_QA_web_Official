@@ -25,13 +25,16 @@ public class Mailinator_page {
     public static List<WebElement> MailinatorEmail_table_list;
 
     @FindBy(how = How.XPATH, using = "//table[@class='main']//table[2]//tr//td//a")
-    public static WebElement subject;
+    public static WebElement mailnator_email_subject;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Reset')]")
-    public static WebElement MailinatorforgetPassword_resetbutton;
+    public static WebElement Mailinator_forgetPassword_resetbutton;
     
     @FindBy(how = How.XPATH, using = "//iframe[@id='msg_body']")
     public static WebElement MailFrame_mailinator;
+    
+    @FindBy(how = How.XPATH, using = "//td[@align='left']")
+    public static WebElement joinnow_verificationcode;
     
     public Mailinator_page(WebDriver driver) {
 
@@ -41,7 +44,7 @@ public class Mailinator_page {
     public void opendifferentEmail_mailinator(String emailID , String email_Subject) {
 
         driver.navigate().to(config.mailinator_url());
-        mailinator_registered_email.sendKeys(config.username_frgt_pwd());
+        mailinator_registered_email.sendKeys(emailID);
         mailinator_go.click();
 
         for (int i = 0; i < MailinatorEmail_table_list.size(); i++) {
