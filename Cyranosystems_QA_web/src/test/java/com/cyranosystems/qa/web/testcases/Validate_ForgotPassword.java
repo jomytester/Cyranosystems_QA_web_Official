@@ -14,13 +14,13 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     // Forgot Password page > With valid credentials (Clicking on Hyper link in
     // email page in Username page)
     
-    @Test(enabled = false, priority = 1)
+    @Test(enabled = true, priority = 1)
     
     public void forgotPassoword_usernamePage_validCredential() throws InterruptedException {
         
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
         
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
@@ -30,11 +30,11 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgotPassword_resetbutton.click();
         
         helper.SwitchingTo_WindowHandles("Cyrano");
         
-        forgetpassword.changeNewPassword(config.password(), config.password());
+        forgotpassword.changeNewPassword(config.password(), config.password());
         
         Thread.sleep(1000);
         
@@ -46,7 +46,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
     }
 
-    @Test(enabled = false, priority = 2)
+    @Test(enabled = true, priority = 2)
     
     public void forgotPassoword_passwrodPage_validCredential() throws InterruptedException {
         
@@ -54,9 +54,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         Login_page.login_clickon_next_btn.click();
         
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
         
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
@@ -66,11 +66,11 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgotPassword_resetbutton.click();
         
         helper.SwitchingTo_WindowHandles("Cyrano");
         
-        forgetpassword.changeNewPassword(config.password(), config.password());
+        forgotpassword.changeNewPassword(config.password(), config.password());
         
         Thread.sleep(1000);
         
@@ -86,9 +86,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     
     public void forgotPassword_currentPassword_Manual() throws InterruptedException {
         
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
         
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
@@ -96,11 +96,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
+        driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        driver.switchTo().frame(ele);
-        
-        String str = mailinator_handler.mailnator_email_subject.getText();
+        String str = mailinator_handler.mailinator_email_subject.getText();
         
         System.out.println(str);
         
@@ -112,10 +110,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         ForgotPassword_page.currentpasswordtxt.sendKeys(str);
         
-        forgetpassword.changeNewPassword(config.password(), config.password());
+        forgotpassword.changeNewPassword(config.password(), config.password());
         
         Thread.sleep(1000);
-        
         
         ForgotPassword_page.finish.click();
         
@@ -128,13 +125,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     
     public void forgotPassoword_invalidemail() {
         
-        forgetpassword.forgot_password_request("auto123@gmail.com");
+        forgotpassword.forgot_password_request("auto123@gmail.com");
         
-        Login_page.username_txt.sendKeys(config.username_frgt_pwd());
-        
-        Login_page.login_clickon_next_btn.click();
-        
-        String error_msg = forgetpassword.reset_reqest_error_msg.getText();
+        String error_msg = forgotpassword.reset_reqest_error_msg.getText();
         
         Assert.assertEquals(error_msg, "User does not exist!");
     }
@@ -142,33 +135,23 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     @Test(enabled = true, priority = 5)
     public void forgotPassword_invalidCurrentPassword_passwordPage() throws InterruptedException {
        
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
        
-       
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
         // Navigate to Mailinator
         
-        
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
        
-        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
+        driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        driver.switchTo().frame(ele);
-        
-        String str = mailinator_handler.mailnator_email_subject.getText();
+        String str = mailinator_handler.mailinator_email_subject.getText();
        
         System.out.println(str);
        
         // Redirecting to Cyrano
-       
-        mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
-       
-        login.valid_login(config.username(), "300100");
-       
-        helper.SwitchingTo_WindowHandles("Cyrano");
        
         driver.navigate().to(config.staging_url());
        
@@ -185,9 +168,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     @Test(enabled = true, priority = 6)
     public void forgotPassword_invalidCurrentPassword_resetPage() throws InterruptedException {
         
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
         
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
@@ -195,31 +178,23 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
+        driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        driver.switchTo().frame(ele);
-        
-        String str = mailinator_handler.mailnator_email_subject.getText();
+        String str = mailinator_handler.mailinator_email_subject.getText();
         
         System.out.println(str);
         
         // Redirecting to Cyrano
-        
-        mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
-        
-        login.valid_login(config.username(), str);
-        
-        helper.SwitchingTo_WindowHandles("Cyrano");
-        
+                
         driver.navigate().to(config.staging_url());
         
         login.valid_login(config.username_frgt_pwd(), str);
         
         ForgotPassword_page.currentpasswordtxt.sendKeys("300100");
         
-        forgetpassword.changeNewPassword(config.password(), config.password());
+        forgotpassword.changeNewPassword(config.password(), config.password());
         
-        String error_msg = forgetpassword.reset_reqest_error_msg.getText();
+        String error_msg = forgotpassword.reset_reqest_error_msg.getText();
         
         Assert.assertEquals(error_msg, "Invalid user credentials!");
     }
@@ -227,9 +202,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     @Test(enabled = true, priority = 7)
     public void forgotPassword_different_newPassword_confirmPassword() throws InterruptedException {
        
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
         
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
@@ -237,29 +212,25 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
+        driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        driver.switchTo().frame(ele);
-        
-        String str = mailinator_handler.mailnator_email_subject.getText();
+        String str = mailinator_handler.mailinator_email_subject.getText();
         
         System.out.println(str);
         
-        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgotPassword_resetbutton.click();
         
         // Redirecting to Cyrano
         
         helper.SwitchingTo_WindowHandles("Cyrano");
         
-        
         ForgotPassword_page.newpasswordtxt.sendKeys("Test@2222");
         
         ForgotPassword_page.confirmpasswordtxt.sendKeys("Test@7777");
         
-        
         ForgotPassword_page.submit_reset_password.click();
         
-        String error_msg = forgetpassword.reset_reqest_error_msg.getText();
+        String error_msg = forgotpassword.reset_reqest_error_msg.getText();
         
         Assert.assertEquals(error_msg, "Password mismatch!");
     }
@@ -267,9 +238,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
     @Test(enabled = true, priority = 8)
     public void forgotPassword_invalid_newPassword_confirmPassword() throws InterruptedException {
         
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
         
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
@@ -277,24 +248,16 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
+        driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        driver.switchTo().frame(ele);
-        
-        String str = mailinator_handler.mailnator_email_subject.getText();
+        String str = mailinator_handler.mailinator_email_subject.getText();
         
         System.out.println(str);
         
-        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgotPassword_resetbutton.click();
         
         // Redirecting to Cyrano
-        
-        mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
-        
-        ForgotPassword_page.newpasswordtxt.sendKeys("Test@2222");
-        
-        ForgotPassword_page.confirmpasswordtxt.sendKeys("Test@7777");
-        
+              
         helper.SwitchingTo_WindowHandles("Cyrano");
         
         ForgotPassword_page.newpasswordtxt.sendKeys("Test2345");
@@ -303,20 +266,19 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         ForgotPassword_page.submit_reset_password.click();
         
-        String error_msg = forgetpassword.reset_reqest_error_msg.getText();
-        
-        Assert.assertEquals(error_msg, "Password mismatch!");
+        String error_msg = forgotpassword.reset_reqest_error_msg.getText();
         
         Assert.assertEquals(error_msg, "Invalid format!");
+        
     }
     
 
     @Test(enabled = true, priority = 9)
     public void forgotPassword_invalid_newPassword() throws InterruptedException {
         
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
         
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
@@ -324,23 +286,15 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
+        driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        driver.switchTo().frame(ele);
-        
-        String str = mailinator_handler.mailnator_email_subject.getText();
+        String str = mailinator_handler.mailinator_email_subject.getText();
         
         System.out.println(str);
         
-        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgotPassword_resetbutton.click();
         
         // Redirecting to Cyrano
-        
-        mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
-        
-        ForgotPassword_page.newpasswordtxt.sendKeys("Test@2222");
-        
-        ForgotPassword_page.confirmpasswordtxt.sendKeys("Test@7777");
         
         helper.SwitchingTo_WindowHandles("Cyrano");
         
@@ -350,38 +304,31 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         ForgotPassword_page.submit_reset_password.click();
         
-        String error_msg = forgetpassword.reset_reqest_error_msg.getText();
-        
-        Assert.assertEquals(error_msg, "Password mismatch!");
+        String error_msg = forgotpassword.reset_reqest_error_msg.getText();
         
         Assert.assertEquals(error_msg, "Invalid format!");
     }
     
-
-    
     @Test(enabled = true, priority = 10)
     public void forgotPassword_invalid_currentPassword() throws InterruptedException {
         
-        forgetpassword.forgot_password_request(config.username_frgt_pwd());
+        forgotpassword.forgot_password_request(config.username_frgt_pwd());
         
-        String msg = forgetpassword.reset_reqest_success_msg.getText();
+        String msg = forgotpassword.reset_reqest_success_msg.getText();
         
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
         // Navigate to Mailinator
         
-        
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
-        WebElement ele = mailinator_handler.Mailinator_forgetPassword_resetbutton;
+        driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
         
-        driver.switchTo().frame(ele);
-        
-        String str = mailinator_handler.mailnator_email_subject.getText();
+        String str = mailinator_handler.mailinator_email_subject.getText();
         
         System.out.println(str);
         
-        mailinator_handler.Mailinator_forgetPassword_resetbutton.click();
+        mailinator_handler.Mailinator_forgotPassword_resetbutton.click();
         
         // Redirecting to Cyrano
         
@@ -393,7 +340,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         ForgotPassword_page.submit_reset_password.click();
         
-        String error_msg = forgetpassword.reset_reqest_error_msg.getText();
+        String error_msg = forgotpassword.reset_reqest_error_msg.getText();
         
         Assert.assertEquals(error_msg, "Password mismatch!");
     }

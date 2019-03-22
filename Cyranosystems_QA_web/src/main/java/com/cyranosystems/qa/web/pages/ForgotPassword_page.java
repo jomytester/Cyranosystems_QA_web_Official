@@ -15,7 +15,7 @@ public class ForgotPassword_page {
 	@FindBy(how = How.XPATH, using = "//a[contains(text(),'Click Here')]")
 	public static WebElement click_here;
 
-	@FindBy(how = How.NAME, using = "forgotpasswordtxt")
+	@FindBy(how = How.XPATH, using = "//input[@name='forgotpasswordtxt']")
 	public static WebElement forgotpasswordtxt;
 
 	@FindBy(how = How.XPATH, using = "//button[@type='submit']")

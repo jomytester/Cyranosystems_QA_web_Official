@@ -22,7 +22,7 @@ public class Test_Baseclass {
     public Login_page login;
     public Configuration_Property_file config;
     public Helper_factory helper;
-    public ForgotPassword_page forgetpassword;
+    public ForgotPassword_page forgotpassword;
     public Browser_factory browser_factory;
     public Produce_yourclips_page yourClips;
     public Join_now join_now;
@@ -34,7 +34,7 @@ public class Test_Baseclass {
 
         config = new Configuration_Property_file();
         login = new Login_page(driver);
-        forgetpassword = new ForgotPassword_page(driver);
+        forgotpassword = new ForgotPassword_page(driver);
         browser_factory = new Browser_factory();
         yourClips = new Produce_yourclips_page(driver);
         helper = new Helper_factory(driver);
@@ -48,7 +48,7 @@ public class Test_Baseclass {
 
         driver = Browser_factory.start_browser(config.browser_value(), config.staging_url());
         login = PageFactory.initElements(driver, Login_page.class);
-        forgetpassword = PageFactory.initElements(driver, ForgotPassword_page.class);
+        forgotpassword = PageFactory.initElements(driver, ForgotPassword_page.class);
         yourClips = PageFactory.initElements(driver, Produce_yourclips_page.class);
       join_now = PageFactory.initElements(driver, Join_now.class);
         helper = PageFactory.initElements(driver, Helper_factory.class);

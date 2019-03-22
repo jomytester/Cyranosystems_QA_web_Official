@@ -25,10 +25,10 @@ public class Mailinator_page {
     public static List<WebElement> MailinatorEmail_table_list;
 
     @FindBy(how = How.XPATH, using = "//table[@class='main']//table[2]//tr//td//a")
-    public static WebElement mailnator_email_subject;
+    public static WebElement mailinator_email_subject;
 
     @FindBy(how = How.XPATH, using = "//a[contains(text(),'Reset')]")
-    public static WebElement Mailinator_forgetPassword_resetbutton;
+    public static WebElement Mailinator_forgotPassword_resetbutton;
     
     @FindBy(how = How.XPATH, using = "//iframe[@id='msg_body']")
     public static WebElement MailFrame_mailinator;
@@ -52,9 +52,10 @@ public class Mailinator_page {
             if (MailinatorEmail_table_list.get(i).getText().contains(email_Subject)) {
                 // System.out.println(ForgotPassword_page.table_list.get(i).getText());
                 MailinatorEmail_table_list.get(i).click();
+                break;
 
             } else {
-                System.out.println("nothing");
+               // System.out.println("nothing");
             }
         }
     }
