@@ -14,7 +14,7 @@ public class Validate_Produce_Yourclips extends Test_Baseclass {
 
 		login.navigationToHomeLandingScreen();
 		Thread.sleep(3000);		
-		yourClips.create_clip("New Automation", "Video");
+		yourClips.create_clip("New Automation", "Video" , 18000);
 		
 	
 	

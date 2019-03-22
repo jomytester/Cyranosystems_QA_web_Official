@@ -65,13 +65,16 @@ public class Produce_yourclips_page {
     
     @FindBy(how=How.ID, using="circle")
     public static WebElement counter_321;
+    
+    @FindBy(how=How.ID, using="time")
+    public static WebElement recording_timer;
 
     public Produce_yourclips_page(WebDriver driver) {
 
         this.driver = driver;
     }
 
-    public void create_clip(String Clipname, String recordingType) throws Exception {
+    public void create_clip(String Clipname, String recordingType , long millisecondsTorecord) throws Exception {
 
         clickOnProduce_btn.click();
         clickOnYourClips_btn.click();
@@ -101,8 +104,13 @@ public class Produce_yourclips_page {
                 
                 System.out.println("Counter starts");
             }
-
+            
             Thread.sleep(10000);
+                
+            String recordTime =helper.milliseconds_To_Minutes_Format(millisecondsTorecord);
+            
+            System.out.println(recording_timer.getAttribute("innerHTML"));
+         
 
         } else if (recordingType.equalsIgnoreCase("Audio")) {
 

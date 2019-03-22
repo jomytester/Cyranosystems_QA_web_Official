@@ -120,5 +120,13 @@ public class Helper_factory /* extends Test_Baseclass */ {
 
         }
     }
+    
+    public String milliseconds_To_Minutes_Format(long seconds) {
+
+        long s = seconds % 60;
+        long m = (seconds / 60) % 60;
+        long h = (seconds / (60 * 60)) % 24;
+        return String.format(0+"%d:%02d:%02d",h,m,s);
+    }
 
 }
