@@ -26,6 +26,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         // Navigate to Mailinator to open mail
         
+        driver.navigate().to(config.mailinator_url());
+        
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
         driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
@@ -62,6 +64,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         // Navigate to Mailinator
         
+        driver.navigate().to(config.mailinator_url());
+        
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
         driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
@@ -93,6 +97,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
         // Navigate to Mailinator
+        
+        driver.navigate().to(config.mailinator_url());
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
@@ -143,6 +149,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         // Navigate to Mailinator
         
+        driver.navigate().to(config.mailinator_url());
+        
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
        
         driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
@@ -175,6 +183,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
         // Navigate to Mailinator
+        
+        driver.navigate().to(config.mailinator_url());
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
@@ -209,6 +219,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
         // Navigate to Mailinator
+        
+        driver.navigate().to(config.mailinator_url());
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
@@ -245,6 +257,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
         // Navigate to Mailinator
+        
+        driver.navigate().to(config.mailinator_url());
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
@@ -284,6 +298,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         
         // Navigate to Mailinator
         
+        driver.navigate().to(config.mailinator_url());
+        
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         
         driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
@@ -319,6 +335,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
         Assert.assertEquals(msg, "Temporary password will be sent to the below mentioned email address");
         
         // Navigate to Mailinator
+        
+        driver.navigate().to(config.mailinator_url());
         
         mailinator_handler.opendifferentEmail_mailinator(config.username_frgt_pwd(), "Forget something");
         

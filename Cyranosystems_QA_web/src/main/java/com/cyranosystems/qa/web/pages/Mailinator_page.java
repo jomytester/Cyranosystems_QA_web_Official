@@ -43,7 +43,7 @@ public class Mailinator_page {
 
     public void opendifferentEmail_mailinator(String emailID , String email_Subject) {
 
-        driver.navigate().to(config.mailinator_url());
+        
         mailinator_registered_email.sendKeys(emailID);
         mailinator_go.click();
 
@@ -59,5 +59,4 @@ public class Mailinator_page {
             }
         }
     }
-
 }

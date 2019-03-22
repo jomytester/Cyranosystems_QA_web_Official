@@ -16,8 +16,8 @@ public class Validate_JoinNow extends Test_Baseclass{
 	@Test
 	public void new_team_creation() throws InterruptedException, AWTException {
 
-		join_now.join_now("auto4@mailinator.com");
-		Thread.sleep(20000);
+		join_now.join_now("auto6@mailinator.com");
+		Thread.sleep(60000);
 		join_now.submit_btn.click();
 		Thread.sleep(2000);
 		Robot robot = new Robot();
@@ -25,7 +25,7 @@ public class Validate_JoinNow extends Test_Baseclass{
 		robot.keyPress(KeyEvent.VK_T);
 		
 		Thread.sleep(2000);
-		/*String parentWindow = driver.getWindowHandle();
+		String parentWindow = driver.getWindowHandle();
 		
 		 Set<String> allwinodws = driver.getWindowHandles();
 
@@ -50,13 +50,15 @@ public class Validate_JoinNow extends Test_Baseclass{
 
 	                }
 
-	            }
-		
-		mailinator_handler.opendifferentEmail_mailinator("auto4@mailinator.com", "Cyrano Verification Code!");
+	            }     
+	            
+	    driver.navigate().to(config.mailinator_url());
+	    mailinator_handler.opendifferentEmail_mailinator("auto6@mailinator.com", "Cyrano Verification Code!");
 		driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
 		String joinnow_verfication_code = mailinator_handler.joinnow_verificationcode.getText();
 		driver.switchTo().window(parentWindow);
 		
-	        }*/
+		
+
 	}
-}
+}}
