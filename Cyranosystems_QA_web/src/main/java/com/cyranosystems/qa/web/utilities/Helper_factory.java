@@ -7,6 +7,8 @@ import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -121,12 +123,17 @@ public class Helper_factory /* extends Test_Baseclass */ {
         }
     }
     
-    public String milliseconds_To_Minutes_Format(long seconds) {
+    public String milliseconds_To_Minutes_Format(long milliseconds) {
 
-        long s = seconds % 60;
-        long m = (seconds / 60) % 60;
-        long h = (seconds / (60 * 60)) % 24;
-        return String.format(0+"%d:%02d:%02d",h,m,s);
+        long hours = TimeUnit.MILLISECONDS.toHours(milliseconds);
+
+        // long minutes = (milliseconds / 1000) / 60;
+        long minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds);
+
+        // long seconds = (milliseconds / 1000);
+        long seconds2 = TimeUnit.MILLISECONDS.toSeconds(milliseconds);
+        
+        return String.format("0%d:0%d:0%d" ,hours, minutes, seconds2);
     }
 
 }

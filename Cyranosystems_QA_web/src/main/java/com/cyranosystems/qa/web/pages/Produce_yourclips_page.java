@@ -62,11 +62,11 @@ public class Produce_yourclips_page {
 
     @FindBy(how = How.ID, using = "record")
     public static WebElement clickonStartrecording;
-    
-    @FindBy(how=How.ID, using="circle")
+
+    @FindBy(how = How.ID, using = "circle")
     public static WebElement counter_321;
-    
-    @FindBy(how=How.ID, using="time")
+
+    @FindBy(how = How.ID, using = "time")
     public static WebElement recording_timer;
 
     public Produce_yourclips_page(WebDriver driver) {
@@ -74,21 +74,21 @@ public class Produce_yourclips_page {
         this.driver = driver;
     }
 
-    public void create_clip(String Clipname, String recordingType , long millisecondsTorecord) throws Exception {
+    public void create_clip(String Clipname, String recordingType, long millisecondsTorecord) throws Exception {
 
+       WebDriverWait wait = new WebDriverWait(driver,30); 
+       wait.until(ExpectedConditions.visibilityOf(clickOnProduce_btn));
         clickOnProduce_btn.click();
         clickOnYourClips_btn.click();
         clickOnAddClip_btn.click();
         clipname_txt.sendKeys(Clipname);
 
-      
-
         if (recordingType.equalsIgnoreCase("Video")) {
 
             recordVideo_radiobtn.click();
-            
+
             startRecording_btn.click();
-            
+
             Thread.sleep(2000);
 
             helper.Handle_allowBlock_popup("allow");
@@ -97,27 +97,37 @@ public class Produce_yourclips_page {
 
             Thread.sleep(2000);
             
-            clickonStartrecording.click();
             
-            if(counter_321.isDisplayed())
-            {
-                
+
+            clickonStartrecording.click();
+
+            if (counter_321.isDisplayed()) {
+
                 System.out.println("Counter starts");
             }
+           /* WebDriverWait wait = new WebDriverWait(driver , 30);
+            wait.until(ExpectedConditions.invisibilityOf(counter_321));*/
+            
             
             Thread.sleep(10000);
-                
-            String recordTime =helper.milliseconds_To_Minutes_Format(millisecondsTorecord);
+            String recordTime = helper.milliseconds_To_Minutes_Format(millisecondsTorecord);
+            System.out.println(recordTime);
             
-            System.out.println(recording_timer.getAttribute("innerHTML"));
-         
+            System.out.println(recording_timer.getAttribute("innerHTML").toString());
+
+            if (recording_timer.getAttribute("innerHTML").toString().equals(recordTime)) {
+
+                System.out.println("Test stops");
+                clickonStartrecording.click();
+
+            }
 
         } else if (recordingType.equalsIgnoreCase("Audio")) {
 
             recordAudio_radiobtn.click();
-            
+
             startRecording_btn.click();
-            
+
             Thread.sleep(2000);
 
             helper.Handle_allowBlock_popup("allow");
@@ -127,7 +137,7 @@ public class Produce_yourclips_page {
             driver.switchTo().defaultContent();
 
             Thread.sleep(3000);
-            
+
             clickonStartrecording.click();
 
         } else if (recordingType.equalsIgnoreCase("URL")) {
