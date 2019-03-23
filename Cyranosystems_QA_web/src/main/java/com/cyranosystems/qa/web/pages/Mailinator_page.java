@@ -15,7 +15,7 @@ public class Mailinator_page {
     public Configuration_Property_file config = new Configuration_Property_file();
     
     
-    @FindBy(how = How.XPATH, using = "//div[@class='hidden-sm hidden-xs']//input[@placeholder='View Any Public Inbox - i.e tom, bob, etc']")
+    @FindBy(how = How.XPATH, using = "//input[@id='inboxfield']")
     public static WebElement mailinator_registered_email;
 
     @FindBy(how = How.XPATH, using = "//div[@class='hidden-sm hidden-xs']//button[@type='button'][contains(text(),'Go!')]")
