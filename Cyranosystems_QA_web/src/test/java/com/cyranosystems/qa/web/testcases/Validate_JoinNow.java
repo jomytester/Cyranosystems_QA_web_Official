@@ -49,10 +49,8 @@ public class Validate_JoinNow extends Test_Baseclass{
 	                    System.out.println("error in handling window");
 
 	                }
-
 	            }     
 	            
-	    driver.navigate().to(config.mailinator_url());
 	    mailinator_handler.opendifferentEmail_mailinator("auto6@mailinator.com", "Cyrano Verification Code!");
 		driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
 		String joinnow_verfication_code = mailinator_handler.joinnow_verificationcode.getText();
@@ -61,4 +59,5 @@ public class Validate_JoinNow extends Test_Baseclass{
 		
 
 	}
-}}
+}
+}
