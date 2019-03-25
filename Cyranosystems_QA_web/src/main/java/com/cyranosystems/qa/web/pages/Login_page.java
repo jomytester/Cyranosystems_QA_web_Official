@@ -108,8 +108,6 @@ public class Login_page {
 
 					if (actualTitle.contains("Sign in")) {
 
-						System.out.println(driver.getTitle());
-
 						gmail_userid_txt.sendKeys(username);
 
 						gmailNext_btn.click();

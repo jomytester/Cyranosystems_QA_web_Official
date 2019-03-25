@@ -12,12 +12,8 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.io.FileHandler;
 import org.testng.ITestResult;
-
-import com.cyranosystems.qa.web.pages.ForgotPassword_page;
-import com.cyranosystems.qa.web.testbase.Test_Baseclass;
 
 public class Helper_factory /* extends Test_Baseclass */ {
 
@@ -79,6 +75,7 @@ public class Helper_factory /* extends Test_Baseclass */ {
                 System.out.println(driver.getTitle());
 
                 if (actualTitle.equalsIgnoreCase(pageToSwitch)) {
+                    break;
 
                 } else {
 
@@ -92,7 +89,6 @@ public class Helper_factory /* extends Test_Baseclass */ {
     }
 
     public void Handle_allowBlock_popup(String operation_To_be_Performed) {
-
 
         if (operation_To_be_Performed.equalsIgnoreCase("Allow")) {
             try {
@@ -122,7 +118,7 @@ public class Helper_factory /* extends Test_Baseclass */ {
 
         }
     }
-    
+
     public String milliseconds_To_Minutes_Format(long milliseconds) {
 
         long hours = TimeUnit.MILLISECONDS.toHours(milliseconds);
@@ -132,8 +128,8 @@ public class Helper_factory /* extends Test_Baseclass */ {
 
         // long seconds = (milliseconds / 1000);
         long seconds2 = TimeUnit.MILLISECONDS.toSeconds(milliseconds);
-        
-        return String.format("0%d:0%d:0%d" ,hours, minutes, seconds2);
+
+        return String.format("0%d:0%d:0%d", hours, minutes, seconds2);
     }
 
 }
