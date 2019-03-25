@@ -56,6 +56,7 @@ public class Mailinator_page {
         for (int i = 0; i < MailinatorEmail_table_list.size(); i++) {
 
             if (MailinatorEmail_table_list.get(i).getText().contains(email_Subject)) {
+            	
                 // System.out.println(ForgotPassword_page.table_list.get(i).getText());
                 MailinatorEmail_table_list.get(i).click();
                 break;

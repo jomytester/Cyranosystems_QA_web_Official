@@ -106,30 +106,6 @@ public class Validate_JoinNow extends Test_Baseclass{
 	        
 	        helper.SwitchingTo_WindowHandles("Cyrano");
 	        
-	        /*Set<String> allwinodws1 = driver.getWindowHandles();
-	        
-	        for (String childWindows : allwinodws1) {
-	        	
-	        	if (!childWindows.equals(parentWindow)) {
-
-	                driver.switchTo().window(childWindows);
-
-	                String actualTitle = driver.getTitle();
-
-	                System.out.println(driver.getTitle());
-
-	                if (actualTitle.equalsIgnoreCase("Cyrano")) {
-
-	                } else {
-
-	                    System.out.println("error in handling window");
-
-	                }
-
-	            }
-
-	        }*/
-	        
 	        Thread.sleep(1000);
 	        
 	        forgotpassword.changeNewPassword(config.password(), config.password());

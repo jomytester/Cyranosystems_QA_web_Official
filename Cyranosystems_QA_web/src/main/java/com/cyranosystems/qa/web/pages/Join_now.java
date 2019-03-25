@@ -66,6 +66,7 @@ public class Join_now {
 		try {
 			
 		} catch (Exception e) {
+			
 			System.out.println("Re-Captcha couldn't complete"+e.getMessage());
 		}
 		
