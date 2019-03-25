@@ -43,6 +43,7 @@ public class ForgotPassword_page {
 	public static WebElement finish;
 
 	public ForgotPassword_page(WebDriver idriver) {
+		
 		this.driver = idriver;
 	}
 
@@ -64,8 +65,5 @@ public class ForgotPassword_page {
 
 		ForgotPassword_page.submit_reset_password.click();
 	}
-
-	
-	
 
 }

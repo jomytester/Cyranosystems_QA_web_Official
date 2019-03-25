@@ -27,9 +27,26 @@ public class Join_now {
 	@FindBy(how = How.XPATH, using = "//span[@class='recaptcha-checkbox goog-inline-block recaptcha-checkbox-unchecked rc-anchor-checkbox']//div[@class='recaptcha-checkbox-checkmark']")
 	public static WebElement check_box;
 	
-	@FindBy(how = How.XPATH, using = "")
-	public static WebElement f1;
+	@FindBy(how = How.XPATH, using = "//input[@name='verification']")
+	public static WebElement joinTeam_VerificationCode;
 	
+	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
+	public static WebElement verify_your_code_button;
+	
+	@FindBy(how = How.XPATH, using = "//input[@name='firstname']")
+	public static WebElement DetailsPage_firstName;
+	
+	@FindBy(how = How.XPATH, using = "//input[@name='lastname']")
+	public static WebElement DetailsPage_lastName;
+	
+	@FindBy(how = How.XPATH, using = "//input[@name='phoneno']")
+	public static WebElement DetailsPage_phoneNo;
+	
+	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
+	public static WebElement DetailsPage_submitButton;
+	
+	@FindBy(how = How.XPATH, using = "")
+	public static WebElement f;
 	
 	
 	public Join_now(WebDriver driver) {
@@ -47,14 +64,28 @@ public class Join_now {
 		re_enter_workemail.sendKeys(username);
 		
 		try {
-			Thread.sleep(80000);
+			
 		} catch (Exception e) {
+			
 			System.out.println("Re-Captcha couldn't complete"+e.getMessage());
 		}
 		
-		//submit_btn.click();
+	}
+	
+	public void detailsPage(String first, String last, String phone) throws InterruptedException {
+		
+		DetailsPage_firstName.sendKeys(first);
+		
+		DetailsPage_lastName.sendKeys(last);
+		
+		DetailsPage_phoneNo.sendKeys(phone);
+		
+		DetailsPage_submitButton.click();
+		
+		Thread.sleep(1000);
+		
+		DetailsPage_submitButton.click();
 		
 	}
-
 	
 }

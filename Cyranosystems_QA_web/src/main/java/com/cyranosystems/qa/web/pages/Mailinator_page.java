@@ -18,7 +18,7 @@ public class Mailinator_page {
     @FindBy(how = How.XPATH, using = "//input[@id='inboxfield']")
     public static WebElement mailinator_registered_email;
 
-    @FindBy(how = How.XPATH, using = "//div[@class='hidden-sm hidden-xs']//button[@type='button'][contains(text(),'Go!')]")
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Go!')]")
     public static WebElement mailinator_go;
 
     @FindBy(how = How.XPATH, using = "//div[@class='table-responsive']//table//tbody//tr")
@@ -36,6 +36,12 @@ public class Mailinator_page {
     @FindBy(how = How.XPATH, using = "//td[@align='left']")
     public static WebElement joinnow_verificationcode;
     
+    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Go!')]")
+	public static WebElement homePage_goButton;
+    
+    @FindBy(how = How.XPATH, using = "//a[contains(text(),'Join team')]")
+	public static WebElement joinTeam_button;
+    
     public Mailinator_page(WebDriver driver) {
 
         this.driver = driver;
@@ -50,6 +56,7 @@ public class Mailinator_page {
         for (int i = 0; i < MailinatorEmail_table_list.size(); i++) {
 
             if (MailinatorEmail_table_list.get(i).getText().contains(email_Subject)) {
+            	
                 // System.out.println(ForgotPassword_page.table_list.get(i).getText());
                 MailinatorEmail_table_list.get(i).click();
                 break;
@@ -58,5 +65,5 @@ public class Mailinator_page {
                // System.out.println("nothing");
             }
         }
-    }
+    }  
 }

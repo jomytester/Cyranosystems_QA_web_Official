@@ -15,6 +15,7 @@ public class Browser_factory {
 	public static WebDriver start_browser(String browser_name, String url) {
 
 		try {
+			
 			if (browser_name.equalsIgnoreCase("chrome")) {
 
 				System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");
@@ -30,6 +31,7 @@ public class Browser_factory {
 				driver = new FirefoxDriver();
 				
 			}
+			
 		} catch (Exception e) {
 			
 			
@@ -38,7 +40,7 @@ public class Browser_factory {
 		
 		driver.manage().window().maximize();
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		driver.manage().deleteAllCookies();
 		driver.get(url);
 		return driver;
