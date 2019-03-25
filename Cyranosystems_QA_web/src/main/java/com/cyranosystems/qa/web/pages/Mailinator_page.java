@@ -65,6 +65,5 @@ public class Mailinator_page {
                // System.out.println("nothing");
             }
         }
-    }
-    
+    }  
 }

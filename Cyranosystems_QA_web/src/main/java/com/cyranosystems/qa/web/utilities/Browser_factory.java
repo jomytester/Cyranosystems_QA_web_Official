@@ -15,6 +15,7 @@ public class Browser_factory {
 	public static WebDriver start_browser(String browser_name, String url) {
 
 		try {
+			
 			if (browser_name.equalsIgnoreCase("chrome")) {
 
 				System.setProperty("webdriver.chrome.driver", "./Drivers/chromedriver.exe");

@@ -87,6 +87,5 @@ public class Join_now {
 		DetailsPage_submitButton.click();
 		
 	}
-
 	
 }

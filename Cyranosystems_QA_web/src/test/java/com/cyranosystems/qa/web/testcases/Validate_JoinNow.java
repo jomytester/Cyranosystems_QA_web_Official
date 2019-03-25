@@ -115,4 +115,5 @@ public class Validate_JoinNow extends Test_Baseclass{
 	        forgotpassword.finish.click();
 	        
 }
+	
 }

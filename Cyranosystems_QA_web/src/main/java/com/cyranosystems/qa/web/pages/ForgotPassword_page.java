@@ -66,7 +66,4 @@ public class ForgotPassword_page {
 		ForgotPassword_page.submit_reset_password.click();
 	}
 
-	
-	
-
 }
