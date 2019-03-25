@@ -1,4 +1,4 @@
-package com.cyranosystems.qa.web.pages;
+    package com.cyranosystems.qa.web.pages;
 
 import java.util.List;
 
