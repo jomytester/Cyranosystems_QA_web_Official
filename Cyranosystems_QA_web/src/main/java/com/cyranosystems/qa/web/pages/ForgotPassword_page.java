@@ -26,8 +26,7 @@ public class ForgotPassword_page {
 
 	@FindBy(how = How.XPATH, using = "//span[@class='succtxt-cls']")
 	public static WebElement reset_reqest_success_msg;
-
-
+	
 	@FindBy(how = How.XPATH, using = "//input[@name='currentpasswordtxt']")
 	public static WebElement currentpasswordtxt;
 

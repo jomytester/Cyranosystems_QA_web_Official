@@ -50,12 +50,12 @@ public class Test_Baseclass {
         login = PageFactory.initElements(driver, Login_page.class);
         forgotpassword = PageFactory.initElements(driver, ForgotPassword_page.class);
         yourClips = PageFactory.initElements(driver, Produce_yourclips_page.class);
-      join_now = PageFactory.initElements(driver, Join_now.class);
+        join_now = PageFactory.initElements(driver, Join_now.class);
         helper = PageFactory.initElements(driver, Helper_factory.class);
         mailinator_handler= PageFactory.initElements(driver, Mailinator_page.class);
     }
 
-    @AfterMethod
+   /* @AfterMethod
     public void browser_close(ITestResult result) {
 
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -63,7 +63,7 @@ public class Test_Baseclass {
         }
 
         driver.quit();
-    }
+    }*/
 
 
 }
