@@ -13,140 +13,149 @@ import com.cyranosystems.qa.web.utilities.Helper_factory;
 
 public class Produce_yourclips_page {
 
-    WebDriver driver;
+	WebDriver driver;
 
-    protected Helper_factory helper = new Helper_factory(driver);
+	protected Helper_factory helper = new Helper_factory(driver);
 
-    @FindBy(how = How.XPATH, using = "//span[contains(text(),'PRODUCE')]")
-    public static WebElement clickOnProduce_btn;
+	@FindBy(how = How.XPATH, using = "//span[contains(text(),'PRODUCE')]")
+	public static WebElement clickOnProduce_btn;
 
-    @FindBy(how = How.XPATH, using = "//li[@id='cust-admin-clips']")
-    public static WebElement clickOnYourClips_btn;
+	@FindBy(how = How.XPATH, using = "//li[@id='cust-admin-clips']")
+	public static WebElement clickOnYourClips_btn;
 
-    @FindBy(how = How.XPATH, using = "//button[@angularticsaction='AddClip']")
-    public static WebElement clickOnAddClip_btn;
+	@FindBy(how = How.XPATH, using = "//button[@angularticsaction='AddClip']")
+	public static WebElement clickOnAddClip_btn;
 
-    @FindBy(how = How.XPATH, using = "//input[@placeholder='Name']")
-    public static WebElement clipname_txt;
+	@FindBy(how = How.XPATH, using = "//input[@placeholder='Name']")
+	public static WebElement clipname_txt;
 
-    @FindBy(how = How.XPATH, using = "//textarea[@id='description']")
-    public static WebElement description_txt;
+	@FindBy(how = How.XPATH, using = "//textarea[@id='description']")
+	public static WebElement description_txt;
 
-    @FindBy(how = How.XPATH, using = "//div[@class='col-lg-5 col-md-5 col-xs-5'][2]//div//div//span")
-    public static List<WebElement> recordingOptions_list;
+	@FindBy(how = How.XPATH, using = "//div[@class='col-lg-5 col-md-5 col-xs-5'][2]//div//div//span")
+	public static List<WebElement> recordingOptions_list;
 
-    @FindBy(how = How.XPATH, using = "//div[contains(@class,'col-lg-5 col-md-5 col-xs-5')]//div[2]//div[1]//input[1]")
-    public static WebElement recordVideo_radiobtn;
+	@FindBy(how = How.XPATH, using = "//div[contains(@class,'col-lg-5 col-md-5 col-xs-5')]//div[2]//div[1]//input[1]")
+	public static WebElement recordVideo_radiobtn;
 
-    @FindBy(how = How.XPATH, using = "//div[3]//div[1]//input[1]")
-    public static WebElement recordAudio_radiobtn;
+	@FindBy(how = How.XPATH, using = "//div[3]//div[1]//input[1]")
+	public static WebElement recordAudio_radiobtn;
 
-    @FindBy(how = How.XPATH, using = "//input[@angularticslabel='YourClips-AddClip-Embed-Url']")
-    public static WebElement embedURl_radiobtn;
+	@FindBy(how = How.XPATH, using = "//input[@angularticslabel='YourClips-AddClip-Embed-Url']")
+	public static WebElement embedURl_radiobtn;
 
-    @FindBy(how = How.XPATH, using = "embedURl_radiobtn")
-    public static WebElement upload_radiobtn;
+	@FindBy(how = How.XPATH, using = "embedURl_radiobtn")
+	public static WebElement upload_radiobtn;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Start Recording')]")
-    public static WebElement startRecording_btn;
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Start Recording')]")
+	public static WebElement startRecording_btn;
 
-    @FindBy(how = How.XPATH, using = "//button[contains(text(),'Select')]")
-    public static WebElement selectURL_btn;
+	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Select')]")
+	public static WebElement selectURL_btn;
 
-    @FindBy(how = How.XPATH, using = "//input[@id='uploadBtn']")
-    public static WebElement browserupload_btn;
+	@FindBy(how = How.XPATH, using = "//input[@id='uploadBtn']")
+	public static WebElement browserupload_btn;
 
-    @FindBy(how = How.ID, using = "record")
-    public static WebElement clickonStartrecording;
+	@FindBy(how = How.ID, using = "record")
+	public static WebElement clickonStartrecording;
 
-    @FindBy(how = How.ID, using = "circle")
-    public static WebElement counter_321;
+	@FindBy(how = How.ID, using = "circle")
+	public static WebElement counter_321;
 
-    @FindBy(how = How.ID, using = "time")
-    public static WebElement recording_timer;
+	@FindBy(how = How.ID, using = "time")
+	public static WebElement recording_timer;
 
-    public Produce_yourclips_page(WebDriver driver) {
+	public Produce_yourclips_page(WebDriver driver) {
 
-        this.driver = driver;
-    }
+		this.driver = driver;
+	}
 
-    public void create_clip(String Clipname, String recordingType, long millisecondsTorecord) throws Exception {
+	public void create_clip(String Clipname, String recordingType, long millisecondsTorecord) throws Exception {
 
-       WebDriverWait wait = new WebDriverWait(driver,30); 
-       wait.until(ExpectedConditions.visibilityOf(clickOnProduce_btn));
-        clickOnProduce_btn.click();
-        clickOnYourClips_btn.click();
-        clickOnAddClip_btn.click();
-        clipname_txt.sendKeys(Clipname);
+		WebDriverWait wait = new WebDriverWait(driver, 30);
 
-        if (recordingType.equalsIgnoreCase("Video")) {
+		wait.until(ExpectedConditions.visibilityOf(clickOnProduce_btn));
 
-            recordVideo_radiobtn.click();
+		clickOnProduce_btn.click();
 
-            startRecording_btn.click();
+		clickOnYourClips_btn.click();
 
-            Thread.sleep(2000);
+		clickOnAddClip_btn.click();
 
-            helper.Handle_allowBlock_popup("allow");
+		clipname_txt.sendKeys(Clipname);
 
-            driver.switchTo().defaultContent();
+		if (recordingType.equalsIgnoreCase("Video")) {
 
-            Thread.sleep(2000);
-            
-            
+			recordVideo_radiobtn.click();
 
-            clickonStartrecording.click();
+			startRecording_btn.click();
 
-            if (counter_321.isDisplayed()) {
+			Thread.sleep(2000);
 
-                System.out.println("Counter starts");
-            }
-           /* WebDriverWait wait = new WebDriverWait(driver , 30);
-            wait.until(ExpectedConditions.invisibilityOf(counter_321));*/
-            
-            
-            Thread.sleep(10000);
-            String recordTime = helper.milliseconds_To_Minutes_Format(millisecondsTorecord);
-            System.out.println(recordTime);
-            
-            System.out.println(recording_timer.getAttribute("innerHTML").toString());
+			helper.Handle_allowBlock_popup("allow");
 
-            if (recording_timer.getAttribute("innerHTML").toString().equals(recordTime)) {
+			driver.switchTo().defaultContent();
 
-                System.out.println("Test stops");
-                clickonStartrecording.click();
+			Thread.sleep(2000);
 
-            }
+			clickonStartrecording.click();
 
-        } else if (recordingType.equalsIgnoreCase("Audio")) {
+			if (counter_321.isDisplayed()) {
 
-            recordAudio_radiobtn.click();
+				System.out.println("Counter starts");
+			}
+			/*
+			 * WebDriverWait wait = new WebDriverWait(driver , 30);
+			 * wait.until(ExpectedConditions.invisibilityOf(counter_321));
+			 */
 
-            startRecording_btn.click();
+			Thread.sleep(10000);
 
-            Thread.sleep(2000);
+			String recordTime = helper.milliseconds_To_Minutes_Format(millisecondsTorecord);
 
-            helper.Handle_allowBlock_popup("allow");
+			System.out.println(recordTime);
 
-            Thread.sleep(3000);
+			System.out.println(recording_timer.getAttribute("innerHTML").toString());
 
-            driver.switchTo().defaultContent();
+			if (recording_timer.getAttribute("innerHTML").toString().equals(recordTime)) {
 
-            Thread.sleep(3000);
+				System.out.println("Test stops");
 
-            clickonStartrecording.click();
+				clickonStartrecording.click();
 
-        } else if (recordingType.equalsIgnoreCase("URL")) {
+			}
 
-            embedURl_radiobtn.click();
-            selectURL_btn.click();
+		} else if (recordingType.equalsIgnoreCase("Audio")) {
 
-        } else if (recordingType.equalsIgnoreCase("Upload")) {
+			recordAudio_radiobtn.click();
 
-            upload_radiobtn.click();
-            browserupload_btn.click();
+			startRecording_btn.click();
 
-        }
+			Thread.sleep(2000);
 
-    }
+			helper.Handle_allowBlock_popup("allow");
+
+			Thread.sleep(3000);
+
+			driver.switchTo().defaultContent();
+
+			Thread.sleep(3000);
+
+			clickonStartrecording.click();
+
+		} else if (recordingType.equalsIgnoreCase("URL")) {
+
+			embedURl_radiobtn.click();
+
+			selectURL_btn.click();
+
+		} else if (recordingType.equalsIgnoreCase("Upload")) {
+
+			upload_radiobtn.click();
+
+			browserupload_btn.click();
+
+		}
+
+	}
 }

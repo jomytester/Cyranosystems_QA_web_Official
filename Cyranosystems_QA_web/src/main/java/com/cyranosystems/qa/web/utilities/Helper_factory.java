@@ -17,119 +17,139 @@ import org.testng.ITestResult;
 
 public class Helper_factory /* extends Test_Baseclass */ {
 
-    WebDriver driver;
+	WebDriver driver;
 
-    public Helper_factory(WebDriver driver) {
+	public Helper_factory(WebDriver driver) {
 
-        this.driver = driver;
-    }
+		this.driver = driver;
+	}
 
-    public static void aftermethodcaptureScreenshot(WebDriver driver, ITestResult result) {
+	public static void aftermethodcaptureScreenshot(WebDriver driver, ITestResult result) {
 
-        String method = result.getName();
+		String method = result.getName();
 
-        try {
-            TakesScreenshot screenshot = (TakesScreenshot) driver;
+		try {
 
-            File source = screenshot.getScreenshotAs(OutputType.FILE);
-            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
 
-            FileHandler.copy(source, new File("./Screenshots/" + method + timeStamp + ".png"));
+			File source = screenshot.getScreenshotAs(OutputType.FILE);
 
-        } catch (Exception e) {
+			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
-            System.out.println("Unable to capture screenshot" + e.getMessage());
-        }
-    }
+			FileHandler.copy(source, new File("./Screenshots/" + method + timeStamp + ".png"));
 
-    public static void captureScreenshot(WebDriver driver, String methodname) {
+		} catch (Exception e) {
 
-        try {
-            TakesScreenshot screenshot = (TakesScreenshot) driver;
+			System.out.println("Unable to capture screenshot" + e.getMessage());
+		}
+	}
 
-            File source = screenshot.getScreenshotAs(OutputType.FILE);
-            String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+	public static void captureScreenshot(WebDriver driver, String methodname) {
 
-            FileHandler.copy(source, new File("./Screenshots/" + methodname + timeStamp + ".png"));
+		try {
 
-        } catch (Exception e) {
+			TakesScreenshot screenshot = (TakesScreenshot) driver;
 
-            System.out.println("Unable to capture screenshot" + e.getMessage());
-        }
-    }
+			File source = screenshot.getScreenshotAs(OutputType.FILE);
 
-    public void SwitchingTo_WindowHandles(String pageToSwitch) {
+			String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
 
-        String parentWindow = driver.getWindowHandle();
+			FileHandler.copy(source, new File("./Screenshots/" + methodname + timeStamp + ".png"));
 
-        Set<String> allwinodws = driver.getWindowHandles();
+		} catch (Exception e) {
 
-        for (String childWindows : allwinodws) {
+			System.out.println("Unable to capture screenshot" + e.getMessage());
+		}
+	}
 
-            if (!childWindows.equals(parentWindow)) {
+	public void SwitchingTo_WindowHandles(String pageToSwitch) {
 
-                driver.switchTo().window(childWindows);
+		String parentWindow = driver.getWindowHandle();
 
-                String actualTitle = driver.getTitle();
+		Set<String> allwinodws = driver.getWindowHandles();
 
-                System.out.println(driver.getTitle());
+		for (String childWindows : allwinodws) {
 
-                if (actualTitle.equalsIgnoreCase(pageToSwitch)) {
-                    break;
+			if (!childWindows.equals(parentWindow)) {
 
-                } else {
+				driver.switchTo().window(childWindows);
 
-                    System.out.println("error in handling window");
+				String actualTitle = driver.getTitle();
 
-                }
+				// System.out.println(driver.getTitle());
 
-            }
+				if (actualTitle.equalsIgnoreCase(pageToSwitch)) {
 
-        }
-    }
+					break;
 
-    public void Handle_allowBlock_popup(String operation_To_be_Performed) {
+				} else {
 
-        if (operation_To_be_Performed.equalsIgnoreCase("Allow")) {
-            try {
-                Robot robot = new Robot();
-                robot.keyPress(KeyEvent.VK_TAB);
-                robot.keyRelease(KeyEvent.VK_TAB);
-                robot.keyPress(KeyEvent.VK_ENTER);
-                robot.keyRelease(KeyEvent.VK_ENTER);
-            } catch (Exception e) {
+					System.out.println("error in handling window");
 
-                System.out.println("Unable to click on allow button " + e.getMessage());
-            }
-        } else if (operation_To_be_Performed.equalsIgnoreCase("Block")) {
+				}
 
-            try {
-                Robot robot = new Robot();
-                robot.keyPress(KeyEvent.VK_TAB);
-                robot.keyRelease(KeyEvent.VK_TAB);
-                robot.keyPress(KeyEvent.VK_TAB);
-                robot.keyRelease(KeyEvent.VK_TAB);
-                robot.keyPress(KeyEvent.VK_ENTER);
-                robot.keyRelease(KeyEvent.VK_ENTER);
-            } catch (Exception e) {
+			}
 
-                System.out.println("Unable to click on allow button " + e.getMessage());
-            }
+		}
+	}
 
-        }
-    }
+	public void Handle_allowBlock_popup(String operation_To_be_Performed) {
 
-    public String milliseconds_To_Minutes_Format(long milliseconds) {
+		if (operation_To_be_Performed.equalsIgnoreCase("Allow")) {
 
-        long hours = TimeUnit.MILLISECONDS.toHours(milliseconds);
+			try {
 
-        // long minutes = (milliseconds / 1000) / 60;
-        long minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds);
+				Robot robot = new Robot();
 
-        // long seconds = (milliseconds / 1000);
-        long seconds2 = TimeUnit.MILLISECONDS.toSeconds(milliseconds);
+				robot.keyPress(KeyEvent.VK_TAB);
 
-        return String.format("0%d:0%d:0%d", hours, minutes, seconds2);
-    }
+				robot.keyRelease(KeyEvent.VK_TAB);
+
+				robot.keyPress(KeyEvent.VK_ENTER);
+
+				robot.keyRelease(KeyEvent.VK_ENTER);
+
+			} catch (Exception e) {
+
+				System.out.println("Unable to click on allow button " + e.getMessage());
+			}
+		} else if (operation_To_be_Performed.equalsIgnoreCase("Block")) {
+
+			try {
+
+				Robot robot = new Robot();
+
+				robot.keyPress(KeyEvent.VK_TAB);
+
+				robot.keyRelease(KeyEvent.VK_TAB);
+
+				robot.keyPress(KeyEvent.VK_TAB);
+
+				robot.keyRelease(KeyEvent.VK_TAB);
+
+				robot.keyPress(KeyEvent.VK_ENTER);
+
+				robot.keyRelease(KeyEvent.VK_ENTER);
+
+			} catch (Exception e) {
+
+				System.out.println("Unable to click on allow button " + e.getMessage());
+
+			}
+		}
+	}
+
+	public String milliseconds_To_Minutes_Format(long milliseconds) {
+
+		long hours = TimeUnit.MILLISECONDS.toHours(milliseconds);
+
+		// long minutes = (milliseconds / 1000) / 60;
+		long minutes = TimeUnit.MILLISECONDS.toMinutes(milliseconds);
+
+		// long seconds = (milliseconds / 1000);
+		long seconds2 = TimeUnit.MILLISECONDS.toSeconds(milliseconds);
+
+		return String.format("0%d:0%d:0%d", hours, minutes, seconds2);
+	}
 
 }

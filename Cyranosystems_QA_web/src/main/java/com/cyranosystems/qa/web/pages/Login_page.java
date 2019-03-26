@@ -79,8 +79,11 @@ public class Login_page {
 	public void navigationToHomeLandingScreen() throws Exception {
 
 		Thread.sleep(2000);
+
 		if (driver.getCurrentUrl().equalsIgnoreCase("https://www.cyranolab.io/#/campaign/Mycampaign")) {
+
 			Login_page.moveToonepointO_btn.click();
+
 		}
 	}
 
@@ -123,12 +126,8 @@ public class Login_page {
 						Thread.sleep(5000);
 
 					}
-
 				}
-
 			}
-
 		}
 	}
-
 }

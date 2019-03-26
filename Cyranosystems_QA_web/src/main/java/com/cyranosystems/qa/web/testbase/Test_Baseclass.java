@@ -18,52 +18,73 @@ import com.cyranosystems.qa.web.utilities.Helper_factory;
 
 public class Test_Baseclass {
 
-    public WebDriver driver;
-    public Login_page login;
-    public Configuration_Property_file config;
-    public Helper_factory helper;
-    public ForgotPassword_page forgotpassword;
-    public Browser_factory browser_factory;
-    public Produce_yourclips_page yourClips;
-    public Join_now join_now;
-    public Mailinator_page mailinator_handler;
-    
+	public WebDriver driver;
 
-    @BeforeSuite
-    public void object_creation() {
+	public Login_page login;
 
-        config = new Configuration_Property_file();
-        login = new Login_page(driver);
-        forgotpassword = new ForgotPassword_page(driver);
-        browser_factory = new Browser_factory();
-        yourClips = new Produce_yourclips_page(driver);
-        helper = new Helper_factory(driver);
-        join_now = new Join_now(driver);
-        mailinator_handler = new Mailinator_page(driver);
+	public Configuration_Property_file config;
 
-    }
+	public Helper_factory helper;
 
-    @BeforeMethod
-    public void initialisation() {
+	public ForgotPassword_page forgotpassword;
 
-        driver = Browser_factory.start_browser(config.browser_value(), config.staging_url());
-        login = PageFactory.initElements(driver, Login_page.class);
-        forgotpassword = PageFactory.initElements(driver, ForgotPassword_page.class);
-        yourClips = PageFactory.initElements(driver, Produce_yourclips_page.class);
-        join_now = PageFactory.initElements(driver, Join_now.class);
-        helper = PageFactory.initElements(driver, Helper_factory.class);
-        mailinator_handler= PageFactory.initElements(driver, Mailinator_page.class);
-    }
+	public Browser_factory browser_factory;
 
-   /* @AfterMethod
-    public void browser_close(ITestResult result) {
+	public Produce_yourclips_page yourClips;
 
-        if (result.getStatus() == ITestResult.FAILURE) {
-            Helper_factory.aftermethodcaptureScreenshot(driver, result);
-        }
+	public Join_now join_now;
 
-        driver.quit();
-    }*/
+	public Mailinator_page mailinator_handler;
 
+	@BeforeSuite
+	public void object_creation() {
+
+		config = new Configuration_Property_file();
+
+		login = new Login_page(driver);
+
+		forgotpassword = new ForgotPassword_page(driver);
+
+		browser_factory = new Browser_factory();
+
+		yourClips = new Produce_yourclips_page(driver);
+
+		helper = new Helper_factory(driver);
+
+		join_now = new Join_now(driver);
+
+		mailinator_handler = new Mailinator_page(driver);
+
+	}
+
+	@BeforeMethod
+	public void initialisation() {
+
+		driver = Browser_factory.start_browser(config.browser_value(), config.staging_url());
+
+		login = PageFactory.initElements(driver, Login_page.class);
+
+		forgotpassword = PageFactory.initElements(driver, ForgotPassword_page.class);
+
+		yourClips = PageFactory.initElements(driver, Produce_yourclips_page.class);
+
+		join_now = PageFactory.initElements(driver, Join_now.class);
+
+		helper = PageFactory.initElements(driver, Helper_factory.class);
+
+		mailinator_handler = PageFactory.initElements(driver, Mailinator_page.class);
+	}
+
+	@AfterMethod
+	public void browser_close(ITestResult result) {
+
+		if (result.getStatus() == ITestResult.FAILURE) {
+
+			Helper_factory.aftermethodcaptureScreenshot(driver, result);
+
+		}
+
+		driver.quit();
+	}
 
 }

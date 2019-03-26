@@ -39,7 +39,7 @@ public class Configuration_Property_file {
 
 		return property.getProperty("production_url");
 	}
-	
+
 	public String mailinator_url() {
 
 		return property.getProperty("mailinator_url");
@@ -49,8 +49,8 @@ public class Configuration_Property_file {
 
 		return property.getProperty("username");
 	}
-	
-	public String username_frgt_pwd() {
+
+	public String username_forgotPassword() {
 
 		return property.getProperty("username_frgt_pwd");
 	}
@@ -59,20 +59,20 @@ public class Configuration_Property_file {
 
 		return property.getProperty("password");
 	}
-	
+
 	public String sso_userid() {
-	
+
 		return property.getProperty("SSO_user");
-	
+
 	}
+
 	public String sso_gmail_password() {
-		
+
 		return property.getProperty("SSO_user_password");
 	}
-	
+
 	public String superadmin_username() {
-		
+
 		return property.getProperty("super_admin");
 	}
 }
-

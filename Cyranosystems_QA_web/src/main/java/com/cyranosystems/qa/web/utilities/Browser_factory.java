@@ -10,8 +10,6 @@ public class Browser_factory {
 
 	static WebDriver driver;
 	
-	
-
 	public static WebDriver start_browser(String browser_name, String url) {
 
 		try {
@@ -34,24 +32,21 @@ public class Browser_factory {
 			
 		} catch (Exception e) {
 			
-			
 			System.out.println("Unable to start browser" +e.getMessage());
 		}
 		
 		driver.manage().window().maximize();
+		
 		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+		
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		
 		driver.manage().deleteAllCookies();
+		
 		driver.get(url);
+		
 		return driver;
 
 	}
 	
-	
-		
-
-
-
-	
-
 }

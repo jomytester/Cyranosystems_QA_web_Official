@@ -13,7 +13,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in With valid username and password
 
-	@Test(enabled = true , priority = 8)
+	@Test(enabled = true, priority = 8)
 	public void login_validcredential() {
 
 		login.valid_login(config.username(), config.password());
@@ -22,24 +22,28 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in with incorrect username and click next
 
-	@Test(enabled = true , priority = 8)
+	@Test(enabled = true, priority = 8)
 	public void login_invalidUsername() {
 
 		Login_page.username_txt.sendKeys("jasdaszfdcad@gmail.com");
-		Login_page.login_clickon_next_btn.click();
-		String error_msg = Login_page.userexist_error_msg.getText();
-		Assert.assertEquals(error_msg,
-				"User does not exist. If you have not signed in to Cyrano before, click 'Join Your Team' to get started. Otherwise, check the spelling of your email address.");
 		
+		Login_page.login_clickon_next_btn.click();
+		
+		String error_msg = Login_page.userexist_error_msg.getText();
+		
+		Assert.assertEquals(error_msg,
+				"User does not exist. If you have not signed in to Cyrano before, click 'Join Your Team' to get started. "
+				+ "Otherwise, check the spelling of your email address.");
+
 	}
 
 	// Scenario: Log-in with correct username and incorrect password
 
-	@Test(enabled = true , priority = 7)
+	@Test(enabled = true, priority = 7)
 	public void login_invalidPassword() {
 
 		login.valid_login(config.username(), "sdfv");
-	
+
 		String error_msg = Login_page.loginFailed_error_msg.getText();
 
 		if (error_msg.contains("Login failed!")) {
@@ -53,7 +57,7 @@ public class Validate_Login extends Test_Baseclass {
 	// Scenario: Log-in with correct username and incorrect password (lock the
 	// account)
 
-	@Test(enabled = true , priority = 6)
+	@Test(enabled = true, priority = 6)
 	public void login_lockaccount() throws InterruptedException {
 
 		login.valid_login(config.username(), "sdfv");
@@ -61,6 +65,7 @@ public class Validate_Login extends Test_Baseclass {
 		String error_msg = Login_page.loginFailed_error_msg.getText();
 
 		for (int i = 0; i < 5; i++) {
+			
 			if (error_msg.contains("Login failed!")) {
 
 				Login_page.login_btn.click();
@@ -80,7 +85,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario : Login-handles case sensitive
 
-	@Test(enabled = true , priority = 5)
+	@Test(enabled = true, priority = 5)
 	public void login_caseSensitive_() {
 
 		login.valid_login(config.username().toUpperCase(), config.password().toUpperCase());
@@ -96,13 +101,12 @@ public class Validate_Login extends Test_Baseclass {
 	}
 
 	// Scenario: Login - Authentication (Press-backbutton after signout)
-	@Test(enabled = true , priority = 4)
+	@Test(enabled = true, priority = 4)
 	public void login_Authentication() {
 
 		login.valid_login(config.username(), config.password());
 
 		String title_signin = driver.getTitle();
-		
 
 		Login_page.signout_ellipsis.click();
 
@@ -115,6 +119,7 @@ public class Validate_Login extends Test_Baseclass {
 		if (!title_signin.equals(title_signout)) {
 
 			System.out.println("Condition Passed");
+			
 		} else {
 
 			System.out.println("Condition Failed ");
@@ -123,19 +128,22 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Login - Backtosignin
 
-	@Test(enabled = true , priority = 3)
+	@Test(enabled = true, priority = 3)
 	public void login_backtosignin() {
 
 		Login_page.username_txt.sendKeys(config.username());
+		
 		Login_page.login_clickon_next_btn.click();
+		
 		Login_page.backToSignin_btn.click();
+		
 		login.valid_login(config.username(), config.password());
 
 	}
 
 	// Scenario: Login - Learnmore
 
-	@Test(enabled = true , priority = 2)
+	@Test(enabled = true, priority = 2)
 	public void login_Learnmore() throws InterruptedException {
 
 		String parentWindow = driver.getWindowHandle();
@@ -145,8 +153,11 @@ public class Validate_Login extends Test_Baseclass {
 		Set<String> allwinodws = driver.getWindowHandles();
 
 		for (String childWindows : allwinodws) {
+		
 			if (!childWindows.equals(parentWindow)) {
+			
 				driver.switchTo().window(childWindows);
+				
 				String actualTitle = driver.getTitle();
 
 				if (actualTitle.equalsIgnoreCase("CYRANO - Home")) {
@@ -160,7 +171,7 @@ public class Validate_Login extends Test_Baseclass {
 		}
 	}
 
-	@Test(priority = 1 , enabled = true)
+	@Test(priority = 1, enabled = true)
 	public void login_ssologin() throws InterruptedException {
 
 		login.sso_login(config.sso_userid(), config.sso_gmail_password());

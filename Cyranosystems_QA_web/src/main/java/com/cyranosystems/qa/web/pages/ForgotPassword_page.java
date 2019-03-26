@@ -16,34 +16,34 @@ public class ForgotPassword_page {
 	public static WebElement click_here;
 
 	@FindBy(how = How.XPATH, using = "//input[@name='forgotpasswordtxt']")
-	public static WebElement forgotpasswordtxt;
+	public static WebElement forgotpasswordText;
 
 	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
-	public static WebElement request_reset_link_btn;
+	public static WebElement request_reset_link_button;
 
 	@FindBy(how = How.XPATH, using = "//span[@class='errortxt-cls']")
-	public static WebElement reset_reqest_error_msg;
+	public static WebElement reset_reqest_error_message;
 
 	@FindBy(how = How.XPATH, using = "//span[@class='succtxt-cls']")
-	public static WebElement reset_reqest_success_msg;
+	public static WebElement reset_reqest_success_message;
 
 	@FindBy(how = How.XPATH, using = "//input[@name='currentpasswordtxt']")
-	public static WebElement currentpasswordtxt;
+	public static WebElement currentpasswordText;
 
 	@FindBy(how = How.XPATH, using = "//input[@name='newpasswordtxt']")
-	public static WebElement newpasswordtxt;
+	public static WebElement newpasswordText;
 
 	@FindBy(how = How.XPATH, using = "//input[@name='confirmpasswordtxt']")
-	public static WebElement confirmpasswordtxt;
+	public static WebElement confirmpasswordText;
 
 	@FindBy(how = How.XPATH, using = "//button[@type='submit']")
-	public static WebElement submit_reset_password;
+	public static WebElement submit_reset_password_button;
 
 	@FindBy(how = How.XPATH, using = "//div[@class='d-inline-block']//button")
-	public static WebElement finish;
+	public static WebElement finish_button;
 
 	public ForgotPassword_page(WebDriver idriver) {
-		
+
 		this.driver = idriver;
 	}
 
@@ -51,19 +51,19 @@ public class ForgotPassword_page {
 
 		click_here.click();
 
-		forgotpasswordtxt.sendKeys(username);
+		forgotpasswordText.sendKeys(username);
 
-		request_reset_link_btn.click();
+		request_reset_link_button.click();
 
 	}
-	
-	public void changeNewPassword(String Enter_newpassword , String confirm_newpassword) {
-		
-		ForgotPassword_page.newpasswordtxt.sendKeys(Enter_newpassword ); //config.password()
 
-		ForgotPassword_page.confirmpasswordtxt.sendKeys(confirm_newpassword); //config.password()
+	public void resetPasswordPage(String Enter_newpassword, String confirm_newpassword) {
 
-		ForgotPassword_page.submit_reset_password.click();
+		ForgotPassword_page.newpasswordText.sendKeys(Enter_newpassword); // config.password()
+
+		ForgotPassword_page.confirmpasswordText.sendKeys(confirm_newpassword); // config.password()
+
+		ForgotPassword_page.submit_reset_password_button.click();
 	}
 
 }
