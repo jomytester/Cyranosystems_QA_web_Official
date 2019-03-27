@@ -1,5 +1,7 @@
 package com.cyranosystems.qa.web.pages;
 
+import java.util.Set;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -53,7 +55,7 @@ public class Join_now {
 		this.driver = driver;
 	}
 
-	public void join_now_page(String username) {
+	public void join_now_page_UsernamePage(String username) {
 
 		join_now.click();
 
@@ -84,6 +86,43 @@ public class Join_now {
 
 		DetailsPage_submitButton.click();
 
+	}
+	
+	public void verificationCode_Reading() throws InterruptedException {
+		
+		String parentWindow = driver.getWindowHandle();
+
+		Set<String> allwinodws = driver.getWindowHandles();
+
+		for (String childWindow : allwinodws) {
+
+			if (!childWindow.equals(parentWindow)) {
+
+				driver.switchTo().window(childWindow);
+
+				driver.get("https://www.mailinator.com/");
+
+				Thread.sleep(5000);
+
+				String actualTitle = driver.getTitle();
+
+				String child = driver.getWindowHandle();
+
+				System.out.println(driver.getTitle());
+
+				if (actualTitle.equalsIgnoreCase("Mailinator")) {
+
+				} else {
+
+					System.out.println("error in handling window");
+
+				}
+
+			}
+
+		}
+		
+		String child = driver.getWindowHandle();
 	}
 
 }

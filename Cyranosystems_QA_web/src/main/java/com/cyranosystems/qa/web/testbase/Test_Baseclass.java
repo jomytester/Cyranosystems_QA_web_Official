@@ -12,6 +12,7 @@ import com.cyranosystems.qa.web.pages.Join_now;
 import com.cyranosystems.qa.web.pages.Login_page;
 import com.cyranosystems.qa.web.pages.Mailinator_page;
 import com.cyranosystems.qa.web.pages.Produce_yourclips_page;
+import com.cyranosystems.qa.web.pages.Sharklasers_Page;
 import com.cyranosystems.qa.web.utilities.Browser_factory;
 import com.cyranosystems.qa.web.utilities.Configuration_Property_file;
 import com.cyranosystems.qa.web.utilities.Helper_factory;
@@ -35,6 +36,8 @@ public class Test_Baseclass {
 	public Join_now join_now;
 
 	public Mailinator_page mailinator_handler;
+	
+	public Sharklasers_Page sharklasers_handler;
 
 	@BeforeSuite
 	public void object_creation() {
@@ -54,6 +57,8 @@ public class Test_Baseclass {
 		join_now = new Join_now(driver);
 
 		mailinator_handler = new Mailinator_page(driver);
+		
+		sharklasers_handler = new Sharklasers_Page(driver);
 
 	}
 
@@ -73,6 +78,8 @@ public class Test_Baseclass {
 		helper = PageFactory.initElements(driver, Helper_factory.class);
 
 		mailinator_handler = PageFactory.initElements(driver, Mailinator_page.class);
+		
+		sharklasers_handler = PageFactory.initElements(driver, Sharklasers_Page.class);
 	}
 
 	@AfterMethod
