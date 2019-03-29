@@ -6,7 +6,6 @@ import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
-
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.pages.Join_now;
 import com.cyranosystems.qa.web.pages.Login_page;
@@ -15,6 +14,7 @@ import com.cyranosystems.qa.web.pages.Produce_yourclips_page;
 import com.cyranosystems.qa.web.pages.Sharklasers_Page;
 import com.cyranosystems.qa.web.utilities.Browser_factory;
 import com.cyranosystems.qa.web.utilities.Configuration_Property_file;
+import com.cyranosystems.qa.web.utilities.Excel_Data_Provider;
 import com.cyranosystems.qa.web.utilities.Helper_factory;
 
 public class Test_Baseclass {
@@ -38,6 +38,8 @@ public class Test_Baseclass {
 	public Mailinator_page mailinator_handler;
 	
 	public Sharklasers_Page sharklasers_handler;
+	
+	public Excel_Data_Provider excelData;
 
 	@BeforeSuite
 	public void object_creation() {
@@ -59,6 +61,8 @@ public class Test_Baseclass {
 		mailinator_handler = new Mailinator_page(driver);
 		
 		sharklasers_handler = new Sharklasers_Page(driver);
+		
+		excelData = new Excel_Data_Provider();
 
 	}
 

@@ -1,18 +1,17 @@
 package com.cyranosystems.qa.web.testcases;
 
-import java.util.Set;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.pages.Login_page;
 import com.cyranosystems.qa.web.testbase.Test_Baseclass;
-import com.cyranosystems.qa.web.utilities.Browser_factory;
 
 public class Validate_ForgotPassword extends Test_Baseclass {
+	
+
 
 	// Forgot Password page > With valid credentials (Clicking on Hyper link in
-	// email page in Username page)
+	// email page in Username page)		
 
 	@Test(enabled = false, priority = 1)
 
@@ -104,7 +103,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 		driver.switchTo().frame(mailinator_handler.MailFrame_mailinator);
 
-		String temporaryPassword	 = mailinator_handler.mailinator_email_subject.getText();
+		String temporaryPassword = mailinator_handler.mailinator_email_subject.getText();
 
 		// System.out.println(str);
 
@@ -129,9 +128,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 	@Test(enabled = false, priority = 4)
 
-	public void forgotPassoword_invalidemail() {
+	public void forgotPassword_invalidemail() {
 
-		forgotpassword.forgot_password_request("auto123@gmail.com");
+		forgotpassword.forgot_password_request(excelData.getStringData(1, 1, 2));
 
 		String error_message = forgotpassword.reset_reqest_error_message.getText();
 
@@ -164,7 +163,8 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 		driver.navigate().to(config.staging_url());
 
-		login.valid_login(config.username_forgotPassword(), "300100");
+		login.valid_login(config.username_forgotPassword(), excelData.getStringData(1, 2, 2));
+		//login.valid_login(config.username_forgotPassword(), "336699");
 
 		String error_message = ForgotPassword_page.reset_reqest_error_message.getText();
 
@@ -202,7 +202,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 		login.valid_login(config.username_forgotPassword(), temporaryPassword);
 
-		ForgotPassword_page.currentpasswordText.sendKeys("300100");
+		ForgotPassword_page.currentpasswordText.sendKeys(excelData.getStringData(1, 2, 2));
 
 		forgotpassword.resetPasswordPage(config.password(), config.password());
 
@@ -239,9 +239,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 		helper.SwitchingTo_WindowHandles("Cyrano");
 
-		ForgotPassword_page.newpasswordText.sendKeys("Test@2222");
+		ForgotPassword_page.newpasswordText.sendKeys(excelData.getStringData(1, 3, 2));
 
-		ForgotPassword_page.confirmpasswordText.sendKeys("Test@7777");
+		ForgotPassword_page.confirmpasswordText.sendKeys(excelData.getStringData(1, 4, 2));
 
 		ForgotPassword_page.submit_reset_password_button.click();
 
@@ -278,9 +278,9 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 		helper.SwitchingTo_WindowHandles("Cyrano");
 
-		ForgotPassword_page.newpasswordText.sendKeys("Test2345");
+		ForgotPassword_page.newpasswordText.sendKeys(excelData.getStringData(1, 5, 2));
 
-		ForgotPassword_page.confirmpasswordText.sendKeys("Test7777adssdf");
+		ForgotPassword_page.confirmpasswordText.sendKeys(excelData.getStringData(1, 5, 2));
 
 		ForgotPassword_page.submit_reset_password_button.click();
 
@@ -318,7 +318,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 		helper.SwitchingTo_WindowHandles("Cyrano");
 
-		ForgotPassword_page.newpasswordText.sendKeys("Test2345test");
+		ForgotPassword_page.newpasswordText.sendKeys(excelData.getStringData(1, 5, 2));
 
 		ForgotPassword_page.confirmpasswordText.sendKeys(config.password());
 
@@ -359,7 +359,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 		ForgotPassword_page.newpasswordText.sendKeys(config.password());
 
-		ForgotPassword_page.confirmpasswordText.sendKeys("Test2345567");
+		ForgotPassword_page.confirmpasswordText.sendKeys(excelData.getStringData(1, 5, 2));
 
 		ForgotPassword_page.submit_reset_password_button.click();
 

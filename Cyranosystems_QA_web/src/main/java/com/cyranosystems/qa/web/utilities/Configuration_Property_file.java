@@ -18,6 +18,7 @@ public class Configuration_Property_file {
 			property = new Properties();
 
 			property.load(fileinputstream);
+			
 		} catch (Exception e) {
 
 			System.out.println("Unable to find the property file" + e.getMessage());
