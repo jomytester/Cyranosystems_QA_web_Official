@@ -13,7 +13,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in With valid username and password
 
-	@Test(enabled = true, priority = 8)
+	@Test(enabled = false, priority = 8)
 	public void login_validcredential() {
 
 		login.valid_login(config.username(), config.password());
@@ -22,10 +22,10 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in with incorrect username and click next
 
-	@Test(enabled = true, priority = 8)
+	@Test(enabled = false, priority = 8)
 	public void login_invalidUsername() {
 
-		Login_page.username_txt.sendKeys("jasdaszfdcad@gmail.com");
+		Login_page.username_txt.sendKeys(excelData.getStringData(0, 1, 2));
 		
 		Login_page.login_clickon_next_btn.click();
 		
@@ -39,10 +39,10 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Log-in with correct username and incorrect password
 
-	@Test(enabled = true, priority = 7)
+	@Test(enabled = false, priority = 7)
 	public void login_invalidPassword() {
 
-		login.valid_login(config.username(), "sdfv");
+		login.valid_login(config.username(), excelData.getStringData(0, 2, 2));
 
 		String error_msg = Login_page.loginFailed_error_msg.getText();
 
@@ -60,7 +60,7 @@ public class Validate_Login extends Test_Baseclass {
 	@Test(enabled = true, priority = 6)
 	public void login_lockaccount() throws InterruptedException {
 
-		login.valid_login(config.username(), "sdfv");
+		login.valid_login(config.username(), excelData.getStringData(0, 2, 2));
 
 		String error_msg = Login_page.loginFailed_error_msg.getText();
 
@@ -79,13 +79,13 @@ public class Validate_Login extends Test_Baseclass {
 		String account_locked_error_msg = Login_page.loginFailed_error_msg.getText();
 
 		Assert.assertEquals(account_locked_error_msg,
-				"Your account has been locked for your security. Please use forgot password to re-set your account password");
+				"We have locked your account, just in case something fishy is going on. You can reset your password by clicking next to forgot password below.");
 
 	}
 
 	// Scenario : Login-handles case sensitive
 
-	@Test(enabled = true, priority = 5)
+	@Test(enabled = false, priority = 5)
 	public void login_caseSensitive_() {
 
 		login.valid_login(config.username().toUpperCase(), config.password().toUpperCase());
@@ -101,7 +101,7 @@ public class Validate_Login extends Test_Baseclass {
 	}
 
 	// Scenario: Login - Authentication (Press-backbutton after signout)
-	@Test(enabled = true, priority = 4)
+	@Test(enabled = false, priority = 4)
 	public void login_Authentication() {
 
 		login.valid_login(config.username(), config.password());
@@ -128,7 +128,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Login - Backtosignin
 
-	@Test(enabled = true, priority = 3)
+	@Test(enabled = false, priority = 3)
 	public void login_backtosignin() {
 
 		Login_page.username_txt.sendKeys(config.username());
@@ -143,7 +143,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Login - Learnmore
 
-	@Test(enabled = true, priority = 2)
+	@Test(enabled = false, priority = 2)
 	public void login_Learnmore() throws InterruptedException {
 
 		String parentWindow = driver.getWindowHandle();
@@ -171,7 +171,7 @@ public class Validate_Login extends Test_Baseclass {
 		}
 	}
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void login_ssologin() throws InterruptedException {
 
 		login.sso_login(config.sso_userid(), config.sso_gmail_password());

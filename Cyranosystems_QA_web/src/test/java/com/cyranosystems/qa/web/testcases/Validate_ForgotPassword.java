@@ -13,7 +13,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 	// Forgot Password page > With valid credentials (Clicking on Hyper link in
 	// email page in Username page)		
 
-	@Test(enabled = false, priority = 1)
+	@Test(enabled = true, priority = 1)
 
 	public void forgotPassoword_usernamePage_validCredential() throws InterruptedException {
 
@@ -47,7 +47,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 	}
 
-	@Test(enabled = false, priority = 2)
+	@Test(enabled = true, priority = 2)
 
 	public void forgotPassoword_passwrodPage_validCredential() throws InterruptedException {
 
@@ -85,7 +85,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 	}
 
-	@Test(enabled = false, priority = 3)
+	@Test(enabled = true, priority = 3)
 
 	public void forgotPassword_currentPassword_Manual() throws InterruptedException {
 
@@ -126,7 +126,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		// System.out.println(tab);
 	}
 
-	@Test(enabled = false, priority = 4)
+	@Test(enabled = true, priority = 4)
 
 	public void forgotPassword_invalidemail() {
 
@@ -137,7 +137,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(error_message, "User does not exist!");
 	}
 
-	@Test(enabled = false, priority = 5)
+	@Test(enabled = true, priority = 5)
 
 	public void forgotPassword_invalidCurrentPassword_passwordPage() throws InterruptedException {
 
@@ -174,7 +174,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		}
 	}
 
-	@Test(enabled = false, priority = 6)
+	@Test(enabled = true, priority = 6)
 
 	public void forgotPassword_invalidCurrentPassword_resetPage() throws InterruptedException {
 
@@ -211,7 +211,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(error_message, "Invalid user credentials!");
 	}
 
-	@Test(enabled = false, priority = 7)
+	@Test(enabled = true, priority = 7)
 
 	public void forgotPassword_different_newPassword_confirmPassword() throws InterruptedException {
 
@@ -250,7 +250,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(error_message, "Password mismatch!");
 	}
 
-	@Test(enabled = false, priority = 8)
+	@Test(enabled = true, priority = 8)
 
 	public void forgotPassword_invalid_newPassword_confirmPassword() throws InterruptedException {
 
@@ -290,7 +290,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 
 	}
 
-	@Test(enabled = false, priority = 9)
+	@Test(enabled = true, priority = 9)
 
 	public void forgotPassword_invalid_newPassword() throws InterruptedException {
 
@@ -329,7 +329,7 @@ public class Validate_ForgotPassword extends Test_Baseclass {
 		Assert.assertEquals(error_message, "Invalid format!");
 	}
 
-	@Test(enabled = false, priority = 10)
+	@Test(enabled = true, priority = 10)
 
 	public void forgotPassword_invalid_currentPassword() throws InterruptedException {
 
