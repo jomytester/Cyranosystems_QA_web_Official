@@ -22,7 +22,7 @@ public class Sharklasers_Page {
 	public static WebElement m3;
 	
 	@FindBy(how = How.XPATH, using = "")
-	public static WebElement m55;
+	public static WebElement m;
 	
 	@FindBy(how = How.XPATH, using = "")
 	public static WebElement m5;
