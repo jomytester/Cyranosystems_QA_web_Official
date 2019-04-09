@@ -15,6 +15,8 @@ public class Validate_Login extends Test_Baseclass {
 
 	@Test(enabled = true, priority = 8)
 	public void login_validcredential() {
+	    
+     
 
 		login.valid_login(config.username(), config.password());
 
@@ -101,7 +103,7 @@ public class Validate_Login extends Test_Baseclass {
 	}
 
 	// Scenario: Login - Authentication (Press-backbutton after signout)
-	@Test(enabled = true, priority = 4)
+	@Test(enabled = false, priority = 4)
 	public void login_Authentication() {
 
 		login.valid_login(config.username(), config.password());
@@ -128,7 +130,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Login - Backtosignin
 
-	@Test(enabled = true, priority = 3)
+	@Test(enabled = false, priority = 3)
 	public void login_backtosignin() {
 
 		Login_page.username_txt.sendKeys(config.username());
@@ -143,7 +145,7 @@ public class Validate_Login extends Test_Baseclass {
 
 	// Scenario: Login - Learnmore
 
-	@Test(enabled = true, priority = 2)
+	@Test(enabled = false, priority = 2)
 	public void login_Learnmore() throws InterruptedException {
 
 		String parentWindow = driver.getWindowHandle();
@@ -171,7 +173,7 @@ public class Validate_Login extends Test_Baseclass {
 		}
 	}
 
-	@Test(priority = 1, enabled = true)
+	@Test(priority = 1, enabled = false)
 	public void login_ssologin() throws InterruptedException {
 
 		login.sso_login(config.sso_userid(), config.sso_gmail_password());
