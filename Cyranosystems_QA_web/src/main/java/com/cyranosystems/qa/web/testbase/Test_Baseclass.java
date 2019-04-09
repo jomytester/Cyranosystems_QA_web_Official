@@ -22,7 +22,7 @@ import com.cyranosystems.qa.web.pages.Sharklasers_Page;
 import com.cyranosystems.qa.web.utilities.Browser_factory;
 import com.cyranosystems.qa.web.utilities.Configuration_Property_file;
 import com.cyranosystems.qa.web.utilities.Excel_Data_Provider;
-
+import com.cyranosystems.qa.web.utilities.Extent_report;
 import com.cyranosystems.qa.web.utilities.Helper_factory;
 
 public class Test_Baseclass {
@@ -49,6 +49,8 @@ public class Test_Baseclass {
 
     public Excel_Data_Provider excelData;
     
+    public Extent_report extentReport;
+    
  
     
     @BeforeSuite
@@ -73,6 +75,8 @@ public class Test_Baseclass {
         sharklasers_handler = new Sharklasers_Page(driver);
 
         excelData = new Excel_Data_Provider();
+        
+        extentReport = new Extent_report();
 
       
     }
@@ -106,7 +110,8 @@ public class Test_Baseclass {
 
         }
     
-       
+        extentReport.flush_extentReport();
+        
         driver.quit();
     }
 
