@@ -13,6 +13,7 @@ import org.testng.annotations.BeforeSuite;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.cyranosystems.qa.web.pages.Campaigns_Lists_Page;
 import com.cyranosystems.qa.web.pages.ForgotPassword_page;
 import com.cyranosystems.qa.web.pages.Join_now;
 import com.cyranosystems.qa.web.pages.Login_page;
@@ -51,6 +52,8 @@ public class Test_Baseclass {
     
     public Extent_report extentReport;
     
+    public Campaigns_Lists_Page list;
+    
  
     
     @BeforeSuite
@@ -77,6 +80,8 @@ public class Test_Baseclass {
         excelData = new Excel_Data_Provider();
         
         extentReport = new Extent_report();
+        
+        list = new Campaigns_Lists_Page();
 
       
     }
@@ -99,9 +104,11 @@ public class Test_Baseclass {
         mailinator_handler = PageFactory.initElements(driver, Mailinator_page.class);
 
         sharklasers_handler = PageFactory.initElements(driver, Sharklasers_Page.class);
+        
+        list = PageFactory.initElements(driver, Campaigns_Lists_Page.class);
     }
 
-    @AfterMethod
+/*    @AfterMethod
     public void browser_close(ITestResult result) {
 
         if (result.getStatus() == ITestResult.FAILURE) {
@@ -113,6 +120,6 @@ public class Test_Baseclass {
         extentReport.flush_extentReport();
         
         driver.quit();
-    }
+    }*/
     
 }

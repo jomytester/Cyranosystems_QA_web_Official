@@ -3,9 +3,8 @@
 <suite name="Suite">
   <test thread-count="5" name="Test">
     <classes>
-    <class name="com.cyranosystems.qa.web.testcases.Validate_JoinNow"/>
-      <class name="com.cyranosystems.qa.web.testcases.Validate_LoginPage"/>
-      
+   	  <class name="com.cyranosystems.qa.web.testcases.Validate_ForgotPassword"/>
+   
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->
